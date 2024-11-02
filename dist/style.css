@@ -221,8 +221,15 @@
   nav {
     padding: 1rem 2rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    background: var(--primary);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+  }
+  
+  nav.hidden {
+    transform: translateY(-100%);
   }
   
   nav ul {
@@ -290,4 +297,22 @@
   
   footer a {
     color: var(--light);
+  }
+  
+  /* Add very light mask */
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.2); /* Very light white overlay */
+    z-index: 1;
+  }
+  
+  /* Adjust logo position if needed */
+  .logo {
+    position: absolute;
+    left: 2rem;
   }
