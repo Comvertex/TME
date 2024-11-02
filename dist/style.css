@@ -26,6 +26,14 @@
     position: fixed;
     top: 0;
     z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .header.hidden {
+    transform: translateY(-100%);
   }
   
   .contact-banner {
@@ -33,6 +41,8 @@
     color: var(--light);
     text-align: center;
     padding: 0.5rem;
+    width: 100%;
+    z-index: 1001; /* Keep banner always visible */
   }
   
   .phone-number {
@@ -223,13 +233,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--primary);
-    transform: translateY(0);
-    transition: transform 0.3s ease;
-  }
-  
-  nav.hidden {
-    transform: translateY(-100%);
+    width: 100%;
   }
   
   nav ul {

@@ -1,15 +1,17 @@
 let lastScroll = 0;
-const nav = document.querySelector('nav');
+const header = document.querySelector('.header');
+const banner = document.querySelector('.contact-banner');
+const bannerHeight = banner.offsetHeight;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
-    if (currentScroll > lastScroll && currentScroll > 100) {
-        // Scrolling down & past header
-        nav.classList.add('hidden');
+    if (currentScroll > lastScroll && currentScroll > bannerHeight) {
+        // Scrolling down & past banner
+        header.classList.add('hidden');
     } else {
         // Scrolling up
-        nav.classList.remove('hidden');
+        header.classList.remove('hidden');
     }
     
     lastScroll = currentScroll;
