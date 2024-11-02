@@ -136,3 +136,21 @@
       padding: 2rem 1rem;
     }
   }
+  
+  .primary-service {
+    border-left: 4px solid var(--accent);
+    position: relative;
+  }
+  
+  .primary-service::before {
+    content: "Servizio Principale";
+    position: absolute;
+    top: -12px;
+    left: 1rem;
+    background: var(--accent);
+    color: var(--light);
+    padding: 0.2rem 1rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
