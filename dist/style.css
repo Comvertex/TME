@@ -505,7 +505,7 @@ footer {
     .service-features {
         grid-template-columns: repeat(3, 1fr);
         gap: 2.5rem;
-        padding: 0 2rem 2rem; /* Reduced bottom padding */
+        padding: 1.5rem 2rem 2rem; /* Added top padding to account for tag */
     }
 
     .coverage-section {
@@ -621,4 +621,38 @@ footer {
 /* Keep existing mobile styles untouched */
 @media (max-width: 767px) {
     /* Your existing mobile styles here */
+}
+
+/* Desktop specific fixes */
+@media (min-width: 1024px) {
+    .service-features {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+        padding: 1.5rem 2rem 2rem; /* Added top padding to account for tag */
+    }
+    
+    .feature {
+        position: relative;
+        margin-top: 1rem; /* Add space for the tag */
+        overflow: visible; /* Allow tag to overflow */
+    }
+    
+    .primary-service {
+        margin-top: 2rem; /* Extra space for the tag */
+    }
+    
+    .primary-service::before {
+        content: 'Servizio Principale';
+        position: absolute;
+        top: -2rem; /* Position it above the card */
+        left: 0;
+        background: var(--accent);
+        color: var(--light);
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        z-index: 1;
+        white-space: nowrap; /* Prevent text wrapping */
+    }
 }
