@@ -1,0 +1,138 @@
+:root {
+    /* Professional, trustworthy color palette */
+    --primary: #1a4b84;     /* Deep blue - represents trust and reliability */
+    --secondary: #e8f1f8;   /* Light blue - freshness and clarity */
+    --accent: #f39c12;      /* Warm orange - energy and dedication */
+    --text: #2c3e50;        /* Dark slate - professionalism */
+    --light: #ffffff;
+    --gray: #ecf0f1;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  body {
+    line-height: 1.6;
+    color: var(--text);
+  }
+  
+  .header {
+    background: var(--primary);
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .contact-banner {
+    background: var(--accent);
+    color: var(--light);
+    text-align: center;
+    padding: 0.5rem;
+    font-weight: 600;
+  }
+  
+  .phone-number {
+    color: var(--light);
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .hero-section {
+    background: linear-gradient(rgba(26, 75, 132, 0.9), rgba(26, 75, 132, 0.8)),
+                url('../assets/images/placeholder-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--light);
+    padding: 8rem 2rem;
+    text-align: center;
+    margin-top: 60px;
+  }
+  
+  .hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .service-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 4rem 2rem;
+    background: var(--gray);
+  }
+  
+  .feature {
+    background: var(--light);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .feature:hover {
+    transform: translateY(-5px);
+  }
+  
+  .feature h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .feature ul {
+    list-style: none;
+    margin-top: 1rem;
+  }
+  
+  .feature ul li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+  
+  .feature ul li:before {
+    content: "✓";
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--accent);
+    color: var(--light);
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background: #e67e22;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 6rem 1rem;
+    }
+    
+    .hero-section h1 {
+      font-size: 2rem;
+    }
+    
+    .service-features {
+      grid-template-columns: 1fr;
+      padding: 2rem 1rem;
+    }
+  }
