@@ -353,7 +353,8 @@
   }
   
   .logo-image {
-    width: 100px; /* Adjust size as needed */
+    width: 80px; /* Adjust size for proportion */
+    height: auto;
   }
   
   @keyframes slideIn {
