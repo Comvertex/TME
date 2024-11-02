@@ -455,3 +455,44 @@
         margin-bottom: 2rem;
     }
 }
+
+footer {
+    background: var(--primary);
+    color: var(--light);
+    padding: 2rem;
+    text-align: center;
+}
+
+.contact-info h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.contact-link {
+    color: var(--light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 1.2rem;
+    display: inline-block;
+    margin: 0.5rem 0;
+}
+
+.contact-link:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.contact-info p {
+    margin: 0.5rem 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .contact-info h3 {
+        font-size: 1.5rem;
+    }
+    
+    .contact-link {
+        font-size: 1.1rem;
+    }
+}
