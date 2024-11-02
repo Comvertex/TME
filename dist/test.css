@@ -229,9 +229,10 @@
   
   /* Style the navigation */
   nav {
+    position: relative;
+    justify-content: space-between;
     padding: 1rem 2rem;
     display: flex;
-    justify-content: center;
     align-items: center;
     width: 100%;
   }
@@ -240,6 +241,7 @@
     display: flex;
     gap: 2rem;
     list-style: none;
+    margin-left: auto;
   }
   
   nav a {
@@ -347,8 +349,10 @@
   
   /* Adjust logo position if needed */
   .logo {
-    position: absolute;
-    left: -100px; /* Start off-screen */
+    position: relative;
+    left: 0;
+    margin-right: 2rem;
+    transform: translateX(-100%);
     animation: slideIn 1s forwards;
   }
   
@@ -359,7 +363,7 @@
   
   @keyframes slideIn {
     to {
-        left: 2rem; /* Final position */
+        transform: translateX(0);
     }
   }
   
