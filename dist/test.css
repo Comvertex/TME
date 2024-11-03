@@ -21,18 +21,56 @@
   }
   
   .header {
-    background: var(--primary);
-    width: 100%;
     position: fixed;
     top: 0;
+    width: 100%;
     z-index: 1000;
+  }
+  
+  .top-header {
+    background: var(--primary);
+    padding: 1rem 2rem;
     display: flex;
-    flex-direction: column;
-    transform: translateY(0);
+    justify-content: space-between;
+    align-items: center;
     transition: transform 0.3s ease;
   }
   
-  .header.hidden {
+  .top-header .logo-image {
+    height: 40px;
+    width: auto;
+  }
+  
+  .main-nav {
+    background: var(--accent);
+    padding: 1rem 2rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .main-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+  }
+  
+  .main-nav a {
+    color: var(--light);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  .main-nav a:hover {
+    color: var(--primary);
+  }
+  
+  /* Header scroll behavior */
+  .header.scrolled .top-header {
+    transform: scale(0.95);
+  }
+  
+  .header.scrolled .main-nav {
     transform: translateY(-100%);
   }
   
@@ -721,4 +759,46 @@ footer {
         z-index: 1;
         white-space: nowrap; /* Prevent text wrapping */
     }
+}
+
+.hero-logo {
+    width: 200px;
+    margin-bottom: 2rem;
+}
+
+.typewriter-container {
+    margin: 1.5rem 0;
+}
+
+.typewriter-text {
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0;
+    opacity: 0;
+}
+
+.typewriter-text.line1 {
+    animation: typing 2s steps(40, end) forwards,
+               blink-caret 0.75s step-end infinite;
+}
+
+.typewriter-text.line2 {
+    animation: typing 2s steps(40, end) 2s forwards,
+               blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { 
+        width: 0;
+        opacity: 1;
+    }
+    to { 
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--accent); }
 }
