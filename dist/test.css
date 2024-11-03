@@ -46,6 +46,10 @@
     gap: 0.5rem;
   }
   
+  .phone-number:hover {
+    text-decoration: none; /* Explicitly remove hover underline */
+  }
+  
   .phone-number i {
     font-size: 2rem;
     color: var(--accent); /* Orange icon */
@@ -57,10 +61,12 @@
     font-size: 2rem;
     font-weight: 700;
     transition: color 0.3s ease;
+    text-decoration: none; /* Ensure no underline on the number */
   }
   
   .phone-number:hover span.number {
     color: var(--accent); /* Only the number turns orange on hover */
+    text-decoration: none; /* Explicitly remove hover underline */
   }
   
   .availability {
@@ -70,6 +76,7 @@
     margin-top: auto;
     padding-bottom: 0.3rem;
     color: var(--light); /* Ensure this stays white */
+    text-decoration: none; /* Ensure no underline on availability text */
   }
   
   .main-nav {
@@ -838,28 +845,33 @@ footer {
     }
     
     .phone-number {
-        font-size: 1.2rem;
-        flex-direction: row;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.2rem;
+    }
+    
+    .number-container {
+        display: flex;
+        flex-direction: row; /* Explicitly keep icon and number in row */
         align-items: center;
         gap: 0.5rem;
-        justify-content: center;
+        white-space: nowrap; /* Prevent number from wrapping */
+    }
+    
+    .phone-number i {
+        font-size: 1.2rem;
+        margin-top: 0; /* Reset margin for mobile */
+    }
+    
+    .phone-number span.number {
+        font-size: 1.2rem;
     }
     
     .availability {
         font-size: 0.8rem;
-        margin-left: 0.5rem;
-    }
-    
-    .main-nav {
-        padding: 0.5rem 1rem;
-    }
-    
-    .main-nav ul {
-        gap: 1rem;
-    }
-    
-    .main-nav a {
-        font-size: 0.9rem;
+        margin-top: 0; /* Reset margin for mobile */
+        padding-bottom: 0;
     }
 }
 
@@ -884,4 +896,69 @@ footer {
 /* Adjust scroll offset for section anchors */
 html {
     scroll-padding-top: 120px; /* Adjust this value based on your header height */
+}
+
+/* Base scroll padding for desktop */
+html {
+    scroll-padding-top: 140px; /* Increased base value to account for both header panels */
+}
+
+/* Adjust scroll padding for different screen sizes */
+@media (max-width: 1024px) {
+    html {
+        scroll-padding-top: 130px;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        scroll-padding-top: 110px;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        scroll-padding-top: 90px;
+    }
+}
+
+/* Add some spacing to the top of each section */
+#servizi, #copertura, #contatti {
+    padding-top: 2rem;
+}
+
+/* Ensure sections have enough content padding */
+.services-section, .coverage-section {
+    padding-top: 4rem;
+}
+
+/* Mobile header adjustments */
+@media (max-width: 768px) {
+    .phone-number {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.2rem;
+    }
+
+    /* Container for icon and number */
+    .phone-number .number-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .phone-number i {
+        font-size: 1.2rem;
+        margin-top: 0; /* Reset margin for mobile */
+    }
+
+    .phone-number span.number {
+        font-size: 1.2rem;
+    }
+    
+    .availability {
+        font-size: 0.8rem;
+        margin-top: 0; /* Reset margin for mobile */
+        padding-bottom: 0;
+    }
 }
