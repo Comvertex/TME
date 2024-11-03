@@ -31,20 +31,35 @@
     background: var(--primary);
     padding: 1rem 2rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1001; /* Ensure it's above the nav */
   }
   
-  .top-header .logo-image {
-    height: 40px;
-    width: auto;
+  .phone-number {
+    color: var(--light);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .availability {
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.9;
   }
   
   .main-nav {
     background: var(--accent);
     padding: 1rem 2rem;
     transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1000;
   }
   
   .main-nav ul {
@@ -52,6 +67,8 @@
     justify-content: center;
     gap: 2rem;
     list-style: none;
+    margin: 0;
+    padding: 0;
   }
   
   .main-nav a {
@@ -67,7 +84,8 @@
   
   /* Header scroll behavior */
   .header.scrolled .top-header {
-    transform: scale(0.95);
+    padding: 0.5rem 2rem;
+    transform-origin: top;
   }
   
   .header.scrolled .main-nav {
@@ -81,15 +99,6 @@
     padding: 0.5rem;
     width: 100%;
     z-index: 1001; /* Keep banner always visible */
-  }
-  
-  .phone-number {
-    color: var(--light);
-    text-decoration: none;
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 1rem 0;
-    display: inline-block;
   }
   
   .hero-section {
