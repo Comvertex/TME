@@ -1114,8 +1114,8 @@ html {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
+    background-color: var(--primary); /* Use brand primary color */
+    color: var(--light);
     text-align: center;
     padding: 1rem;
     z-index: 10000;
@@ -1123,22 +1123,43 @@ html {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .consent-banner p {
     margin: 0;
     flex: 1;
+    padding-right: 1rem;
 }
 
 .consent-banner button {
-    background-color: var(--accent);
-    color: white;
     border: none;
     padding: 0.5rem 1rem;
     cursor: pointer;
     margin-left: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.consent-banner button:hover {
+#accept-btn {
+    background-color: var(--accent); /* Use brand accent color */
+    color: var(--light);
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#accept-btn:hover {
     background-color: darken(var(--accent), 10%);
+    transform: scale(1.05);
+}
+
+#refuse-btn {
+    background-color: var(--primary); /* Same as banner background */
+    color: var(--light);
+    border: 1px solid var(--light); /* White outline */
+}
+
+#refuse-btn:hover {
+    background-color: lighten(var(--primary), 10%);
+    transform: scale(1.05);
 }
