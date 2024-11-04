@@ -21,18 +21,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const refuseBtn = document.getElementById('refuse-btn');
 
     // Check if consent has already been given or refused
-    if (!localStorage.getItem('cookieConsent')) {
+    const consentStatus = localStorage.getItem('cookieConsent');
+    console.log('Consent Status:', consentStatus);
+
+    if (consentStatus === null) {
         consentBanner.style.display = 'flex';
+    } else {
+        consentBanner.style.display = 'none';
     }
 
     acceptBtn.addEventListener('click', function() {
         localStorage.setItem('cookieConsent', 'accepted');
+        console.log('Consent Accepted');
         consentGranted();
         consentBanner.style.display = 'none';
     });
 
     refuseBtn.addEventListener('click', function() {
         localStorage.setItem('cookieConsent', 'refused');
+        console.log('Consent Refused');
         consentRefused();
         consentBanner.style.display = 'none';
     });
