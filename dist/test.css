@@ -884,7 +884,7 @@ footer {
     opacity: 0;
     animation: fadeIn 1s ease 2s forwards; /* Start after typewriter (1s + 1s) */
     margin: 1rem 0;
-    font-size: 3vw; /* Use viewport width for scaling */
+    font-size: clamp(1rem, 3vw, 1.5rem); /* Use clamp for scaling */
     color: var(--primary); /* Blue color */
 }
 
@@ -994,10 +994,6 @@ html {
         font-size: 0.8rem; /* Reduce font size */
     }
 
-    .delivery-time {
-        font-size: 0.8rem; /* Reduce font size */
-    }
-
     .cta-buttons {
         flex-direction: column;
         gap: 0.3rem;
@@ -1075,10 +1071,6 @@ html {
 
     .typewriter-text {
         font-size: 4vw; /* Use viewport width for scaling */
-    }
-
-    .delivery-time {
-        font-size: clamp(1rem, 3vw, 1.5rem); /* Use clamp for scaling */
     }
 
     .cta-buttons {
