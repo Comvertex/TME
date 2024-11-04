@@ -1096,7 +1096,7 @@ html {
 
     .header.scrolled .phone-number,
     .header.scrolled .availability {
-        font-size: 0.8rem; /* Scale down text in header */
+        font-size: 0.7rem; /* Further scale down text in header */
     }
 
     .main-nav ul {
