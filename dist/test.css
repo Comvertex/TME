@@ -962,3 +962,34 @@ html {
         padding-bottom: 0;
     }
 }
+
+/* Mobile hero section adjustments for smaller screens */
+@media (max-width: 375px) {
+    .hero-section {
+        height: auto; /* Allow height to adjust based on content */
+        padding: 6rem 1rem 2rem; /* Adjust top padding */
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    
+    .hero-content {
+        width: 100%;
+        padding: 1rem;
+        margin-top: 1rem; /* Adjust margin to fit content better */
+        background-color: rgba(255, 255, 255, 0.85); /* Slightly more opaque background */
+    }
+
+    .hero-section h1 {
+        font-size: 2rem; /* Adjust font size for smaller screens */
+    }
+
+    .typewriter-container {
+        margin: 1rem 0;
+    }
+
+    .cta-buttons {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 0.5rem;
+    }
+}
