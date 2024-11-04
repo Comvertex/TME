@@ -1020,3 +1020,61 @@ html {
         font-size: 0.8rem; /* Reduce font size */
     }
 }
+
+/* Mobile hero section adjustments for screens up to 500px */
+@media (max-width: 500px) {
+    .hero-section {
+        height: auto;
+        padding: 5rem 1rem 2rem; /* Adjust top padding */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .hero-content {
+        width: 100%;
+        padding: 0.5rem;
+        margin-top: 0;
+        background-color: rgba(255, 255, 255, 0.85);
+    }
+
+    .hero-logo {
+        width: 100px; /* Adjust logo size */
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-section h1 {
+        font-size: 1.2rem; /* Reduce font size */
+        margin-bottom: 0.5rem;
+    }
+
+    .typewriter-text {
+        font-size: 0.8rem; /* Reduce font size */
+    }
+
+    .delivery-time {
+        font-size: 0.8rem; /* Reduce font size */
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .cta-button {
+        font-size: 0.7rem; /* Reduce font size */
+        padding: 0.5rem 1rem;
+    }
+
+    .header {
+        padding: 0.5rem 1rem; /* Reduce header height */
+    }
+
+    .main-nav ul {
+        gap: 0.5rem;
+    }
+
+    .main-nav a {
+        font-size: 0.8rem; /* Reduce font size */
+    }
+}
