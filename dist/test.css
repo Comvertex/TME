@@ -1031,11 +1031,21 @@ html {
         width: 100%;
         z-index: 1000;
         margin: 0; /* Remove any margins */
+        transition: height 0.3s ease; /* Smooth transition for scroll */
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 10vh; /* Attach to bottom of blue panel */
+        left: 0;
+        width: 100%;
+        background: var(--accent);
+        z-index: 999;
     }
 
     .hero-section {
-        margin-top: 10vh; /* Offset for fixed header */
-        height: calc(100vh - 10vh); /* Fill remaining viewport height */
+        margin-top: 15vh; /* Offset for fixed header and nav */
+        height: calc(100vh - 15vh); /* Fill remaining viewport height */
         padding: 2rem 1rem; /* Adjust padding */
         display: flex;
         align-items: center;
@@ -1053,7 +1063,7 @@ html {
     }
 
     .hero-logo {
-        width: 20vw; /* Use viewport width for scaling */
+        width: 25vw; /* Adjust logo size */
         margin-bottom: 0.5rem;
     }
 
@@ -1067,7 +1077,7 @@ html {
     }
 
     .delivery-time {
-        font-size: 3.5vw; /* Use viewport width for scaling */
+        font-size: 3.5vw; /* Ensure scaling */
     }
 
     .cta-buttons {
@@ -1080,8 +1090,8 @@ html {
         padding: 0.5rem 1rem;
     }
 
-    .header {
-        padding: 0.5rem 1rem; /* Reduce header height */
+    .header.scrolled .top-header {
+        height: 7vh; /* Reduce height on scroll */
     }
 
     .main-nav ul {
