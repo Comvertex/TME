@@ -17,15 +17,36 @@
     <!-- Favicon -->
     <link rel="icon" type="image/webp" href="assets/logo4.webp">
 
+    <script>
+      // Define dataLayer and the gtag function.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      // Set default consent to 'denied' as a placeholder
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied'
+      });
+    </script>
+
     <!-- Google Tag Manager -->
     <script>
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KCVV7X9L');
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KCVV7X9L');
     </script>
     <!-- End Google Tag Manager -->
+    <script>
+        function consentGrantedAdStorage() {
+        gtag('consent', 'update', {
+            'ad_storage': 'granted'
+            });
+        }
+    </script>     
 </head>
 
 <body>
@@ -162,6 +183,11 @@
             <p><strong>Disponibili 24/7, 365 giorni l'anno</strong></p>
         </div>
     </footer>
+
+    <div id="consent-banner" class="consent-banner">
+        <p>Questo sito utilizza i cookie per migliorare l'esperienza utente. Continuando a navigare, accetti l'uso dei cookie.</p>
+        <button id="accept-btn" onclick="consentGrantedAdStorage()">Accetta</button>
+    </div>
 
     <script src="/dist/test.js"></script> 
 </body>
