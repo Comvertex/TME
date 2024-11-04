@@ -503,17 +503,13 @@ footer a {
   .hero-section {
       height: 100vh;
       min-height: auto;
-      padding: 8rem 1rem 2rem; /* Increased top padding from 4rem to 8rem */
+      padding: 4rem 1rem 2rem;
       margin-top: 0;
-      display: flex;
-      align-items: flex-start; /* Changed from center to flex-start */
-      justify-content: center;
   }
   
   .hero-content {
       width: 90%;
       padding: 1.5rem;
-      margin-top: 2rem; /* Added margin-top to push content down a bit */
   }
   
   .hero-content h1 {
@@ -888,7 +884,7 @@ footer {
   opacity: 0;
   animation: fadeIn 1s ease 2s forwards; /* Start after typewriter (1s + 1s) */
   margin: 1rem 0;
-  font-size: 1.2rem;
+  font-size: clamp(0.5rem, 3vw, 1rem); /* Use clamp for scaling */
   color: var(--primary); /* Blue color */
 }
 
@@ -964,5 +960,151 @@ html {
       font-size: 0.8rem;
       margin-top: 0; /* Reset margin for mobile */
       padding-bottom: 0;
+  }
+}
+
+/* Mobile hero section adjustments for smaller screens */
+@media (max-width: 375px) {
+  .hero-section {
+      height: auto;
+      padding: 5rem 1rem 2rem; /* Adjust top padding */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .hero-content {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0;
+      background-color: rgba(255, 255, 255, 0.85);
+  }
+
+  .hero-logo {
+      width: 100px; /* Adjust logo size */
+      margin-bottom: 0.5rem;
+  }
+
+  .hero-section h1 {
+      font-size: 1.2rem; /* Reduce font size */
+      margin-bottom: 0.5rem;
+  }
+
+  .typewriter-text {
+      font-size: 0.8rem; /* Reduce font size */
+  }
+
+  .cta-buttons {
+      flex-direction: column;
+      gap: 0.3rem;
+  }
+
+  .cta-button {
+      font-size: 0.7rem; /* Reduce font size */
+      padding: 0.5rem 1rem;
+  }
+
+  .header {
+      padding: 0.5rem 1rem; /* Reduce header height */
+  }
+
+  .main-nav ul {
+      gap: 0.5rem;
+  }
+
+  .main-nav a {
+      font-size: 0.8rem; /* Reduce font size */
+  }
+}
+
+/* Mobile hero section adjustments for screens up to 500px */
+@media (max-width: 500px) {
+  .top-header {
+      height: 10vh; /* Set blue banner height */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      margin: 0; /* Remove any margins */
+      transition: height 0.3s ease; /* Smooth transition for scroll */
+  }
+
+  .main-nav {
+      position: fixed;
+      top: 10vh; /* Attach to bottom of blue panel */
+      left: 0;
+      width: 100%;
+      background: var(--accent);
+      z-index: 999;
+      transition: transform 0.3s ease; /* Smooth transition */
+  }
+
+  .hero-section {
+      margin-top: 15vh; /* Offset for fixed header and nav */
+      height: calc(100vh - 15vh); /* Fill remaining viewport height */
+      padding: 2rem 1rem; /* Adjust padding */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .hero-content {
+      width: 100%;
+      padding: 0.5rem;
+      background-color: rgba(255, 255, 255, 0.85);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .hero-logo {
+      width: 30vw; /* Adjust logo size */
+      margin-bottom: 0; /* Remove bottom margin */
+  }
+
+  .hero-section h1 {
+      font-size: 6vw; /* Use viewport width for scaling */
+      margin-bottom: 0.5rem;
+  }
+
+  .typewriter-text {
+      font-size: 4vw; /* Use viewport width for scaling */
+  }
+
+  .cta-buttons {
+      flex-direction: column;
+      gap: 0.3rem;
+  }
+
+  .cta-button {
+      font-size: 3vw; /* Use viewport width for scaling */
+      padding: 0.5rem 1rem;
+  }
+
+  .header.scrolled .top-header {
+      height: 7vh; /* Reduce height on scroll */
+  }
+
+  .header.scrolled .main-nav {
+      transform: translateY(-150%); /* Move further up */
+  }
+
+  .header.scrolled .phone-number,
+  .header.scrolled .availability {
+      font-size: 0.8rem; /* Adjust scale down factor */
+  }
+
+  .header.scrolled .number {
+      font-size: 0.9rem; /* Adjust scale down factor */
+  }
+
+  .main-nav ul {
+      gap: 0.5rem;
+  }
+
+  .main-nav a {
+      font-size: 0.8rem; /* Reduce font size */
   }
 }
