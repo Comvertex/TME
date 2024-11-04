@@ -41,10 +41,13 @@
     </script>
     <!-- End Google Tag Manager -->
     <script>
-        function consentGrantedAdStorage() {
-        gtag('consent', 'update', {
-            'ad_storage': 'granted'
-            });
+        function consentGranted() {
+          gtag('consent', 'update', {
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'analytics_storage': 'granted'
+          });
         }
     </script>     
 </head>
@@ -186,7 +189,7 @@
 
     <div id="consent-banner" class="consent-banner">
         <p>Questo sito utilizza i cookie per migliorare l'esperienza utente. Continuando a navigare, accetti l'uso dei cookie.</p>
-        <button id="accept-btn" onclick="consentGrantedAdStorage()">Accetta</button>
+        <button id="accept-btn" onclick="consentGranted()">Accetta</button>
     </div>
 
     <script src="/dist/test.js"></script> 
