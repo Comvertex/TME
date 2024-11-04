@@ -1078,7 +1078,7 @@ html {
     }
 
     .delivery-time {
-        font-size: 3vw; /* Ensure scaling to fit in one row */
+        font-size: clamp(1rem, 3vw, 1.5rem); /* Use clamp for scaling */
     }
 
     .cta-buttons {
