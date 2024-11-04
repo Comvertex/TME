@@ -1077,7 +1077,7 @@ html {
     }
 
     .delivery-time {
-        font-size: 3.5vw; /* Ensure scaling */
+        font-size: 3vw; /* Ensure scaling to fit in one row */
     }
 
     .cta-buttons {
@@ -1092,6 +1092,11 @@ html {
 
     .header.scrolled .top-header {
         height: 7vh; /* Reduce height on scroll */
+    }
+
+    .header.scrolled .phone-number,
+    .header.scrolled .availability {
+        font-size: 0.8rem; /* Scale down text in header */
     }
 
     .main-nav ul {
