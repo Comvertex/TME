@@ -1064,21 +1064,21 @@ html {
     }
 
     .hero-logo {
-        width: 25vw; /* Adjust logo size */
-        margin-bottom: 0.5rem;
+        width: 30vw; /* Adjust logo size */
+        margin-bottom: 0; /* Remove bottom margin */
     }
 
     .hero-section h1 {
-        font-size: 5vw; /* Use viewport width for scaling */
+        font-size: 6vw; /* Use viewport width for scaling */
         margin-bottom: 0.5rem;
     }
 
     .typewriter-text {
-        font-size: 3.5vw; /* Use viewport width for scaling */
+        font-size: 4vw; /* Use viewport width for scaling */
     }
 
     .delivery-time {
-        font-size: 2vw; /* Ensure scaling to fit in one row */
+        font-size: 3vw; /* Ensure scaling to fit in one row */
     }
 
     .cta-buttons {
