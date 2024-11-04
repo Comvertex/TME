@@ -1023,9 +1023,20 @@ html {
 
 /* Mobile hero section adjustments for screens up to 500px */
 @media (max-width: 500px) {
+    .top-header {
+        height: 10vh; /* Set blue banner height */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        margin: 0; /* Remove any margins */
+    }
+
     .hero-section {
-        height: auto;
-        padding: 5rem 1rem 2rem; /* Adjust top padding */
+        margin-top: 10vh; /* Offset for fixed header */
+        height: calc(100vh - 10vh); /* Fill remaining viewport height */
+        padding: 2rem 1rem; /* Adjust padding */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1034,26 +1045,29 @@ html {
     .hero-content {
         width: 100%;
         padding: 0.5rem;
-        margin-top: 0;
         background-color: rgba(255, 255, 255, 0.85);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .hero-logo {
-        width: 100px; /* Adjust logo size */
+        width: 20vw; /* Use viewport width for scaling */
         margin-bottom: 0.5rem;
     }
 
     .hero-section h1 {
-        font-size: 1.2rem; /* Reduce font size */
+        font-size: 5vw; /* Use viewport width for scaling */
         margin-bottom: 0.5rem;
     }
 
     .typewriter-text {
-        font-size: 0.8rem; /* Reduce font size */
+        font-size: 3.5vw; /* Use viewport width for scaling */
     }
 
     .delivery-time {
-        font-size: 0.8rem; /* Reduce font size */
+        font-size: 3.5vw; /* Use viewport width for scaling */
     }
 
     .cta-buttons {
@@ -1062,7 +1076,7 @@ html {
     }
 
     .cta-button {
-        font-size: 0.7rem; /* Reduce font size */
+        font-size: 3vw; /* Use viewport width for scaling */
         padding: 0.5rem 1rem;
     }
 
