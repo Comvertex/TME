@@ -14,4 +14,17 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Add any additional dynamic effects here
+// Consent banner logic
+document.addEventListener('DOMContentLoaded', function() {
+    const consentBanner = document.getElementById('consent-banner');
+    const acceptBtn = document.getElementById('accept-btn');
+
+    if (!localStorage.getItem('cookieConsent')) {
+        consentBanner.style.display = 'flex';
+    }
+
+    acceptBtn.addEventListener('click', function() {
+        localStorage.setItem('cookieConsent', 'true');
+        consentBanner.style.display = 'none';
+    });
+});

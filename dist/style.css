@@ -1108,3 +1108,37 @@ html {
       font-size: 0.8rem; /* Reduce font size */
   }
 }
+
+.consent-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    z-index: 10000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.consent-banner p {
+    margin: 0;
+    flex: 1;
+}
+
+.consent-banner button {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.consent-banner button:hover {
+    background-color: darken(var(--accent), 10%);
+}
