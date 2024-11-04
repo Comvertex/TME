@@ -1041,6 +1041,7 @@ html {
         width: 100%;
         background: var(--accent);
         z-index: 999;
+        transition: transform 0.3s ease; /* Smooth transition */
     }
 
     .hero-section {
@@ -1092,6 +1093,10 @@ html {
 
     .header.scrolled .top-header {
         height: 7vh; /* Reduce height on scroll */
+    }
+
+    .header.scrolled .main-nav {
+        transform: translateY(-150%); /* Move further up */
     }
 
     .header.scrolled .phone-number,
