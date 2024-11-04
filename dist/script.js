@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const acceptBtn = document.getElementById('accept-btn');
     const refuseBtn = document.getElementById('refuse-btn');
 
-    // Check if consent has already been given or refused
     const consentStatus = localStorage.getItem('cookieConsent');
     console.log('Consent Status:', consentStatus);
 
