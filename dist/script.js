@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const consentStatus = localStorage.getItem('cookieConsent');
     console.log('Consent Status:', consentStatus);
 
-    if (consentStatus === null) {
+    if (!consentStatus) {
         consentBanner.style.display = 'flex';
     } else {
         consentBanner.style.display = 'none';
