@@ -24,10 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const consentStatus = localStorage.getItem('cookieConsent');
     console.log('Consent Status:', consentStatus);
 
-    if (!consentStatus) {
-        consentBanner.style.display = 'flex';
-    } else {
+    if (consentStatus === 'accepted' || consentStatus === 'refused') {
         consentBanner.style.display = 'none';
+    } else {
+        consentBanner.style.display = 'flex';
     }
 
     acceptBtn.addEventListener('click', function() {
