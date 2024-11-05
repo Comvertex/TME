@@ -67,8 +67,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const whatsappButton = document.querySelector('.whatsapp-float');
 
     function adjustWhatsAppPosition() {
-        const bannerHeight = consentBanner.offsetHeight;
-        whatsappButton.style.bottom = `${bannerHeight + 20}px`;
+        if (consentBanner.style.display === 'none') {
+            whatsappButton.style.bottom = '20px';
+        } else {
+            const bannerHeight = consentBanner.offsetHeight;
+            whatsappButton.style.bottom = `${bannerHeight + 20}px`;
+        }
     }
 
     // Adjust position on load
@@ -76,4 +80,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Adjust position on window resize
     window.addEventListener('resize', adjustWhatsAppPosition);
+
+    // Adjust position when consent is given or refused
+    document.getElementById('accept-btn').addEventListener('click', function() {
+        consentBanner.style.display = 'none';
+        adjustWhatsAppPosition();
+    });
+
+    document.getElementById('refuse-btn').addEventListener('click', function() {
+        consentBanner.style.display = 'none';
+        adjustWhatsAppPosition();
+    });
 });
