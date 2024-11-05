@@ -1,1110 +1,1184 @@
 :root {
-    /* Professional, trustworthy color palette */
-    --primary: #1a4b84;     /* Deep blue - represents trust and reliability */
-    --secondary: #e8f1f8;   /* Light blue - freshness and clarity */
-    --accent: #f39c12;      /* Warm orange - energy and dedication */
-    --text: #2c3e50;        /* Dark slate - professionalism */
-    --light: #ffffff;
-    --gray: #ecf0f1;
+  /* Professional, trustworthy color palette */
+  --primary: #1a4b84;     /* Deep blue - represents trust and reliability */
+  --secondary: #e8f1f8;   /* Light blue - freshness and clarity */
+  --accent: #f39c12;      /* Warm orange - energy and dedication */
+  --text: #2c3e50;        /* Dark slate - professionalism */
+  --light: #ffffff;
+  --gray: #ecf0f1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.top-header {
+  background: var(--primary);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1001; /* Ensure it's above the nav */
+}
+
+.phone-number {
+  color: var(--light);
+  text-decoration: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.phone-number:hover {
+  text-decoration: none; /* Explicitly remove hover underline */
+}
+
+.phone-number i {
+  font-size: 2rem;
+  color: var(--accent); /* Orange icon */
+  text-decoration: none;
+  margin-top: 0.3rem;
+}
+
+.phone-number span.number {
+  font-size: 2rem;
+  font-weight: 700;
+  transition: color 0.3s ease;
+  text-decoration: none; /* Ensure no underline on the number */
+}
+
+.phone-number:hover span.number {
+  color: var(--accent); /* Only the number turns orange on hover */
+  text-decoration: none; /* Explicitly remove hover underline */
+}
+
+.availability {
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.9;
+  margin-top: auto;
+  padding-bottom: 0.3rem;
+  color: var(--light); /* Ensure this stays white */
+  text-decoration: none; /* Ensure no underline on availability text */
+}
+
+.main-nav {
+  background: var(--accent);
+  padding: 1rem 2rem;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1000;
+}
+
+.main-nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+}
+
+.main-nav a {
+  color: var(--light);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: var(--primary);
+}
+
+/* Header scroll behavior */
+.header.scrolled .top-header {
+  padding: 0.5rem 2rem;
+  transform-origin: top;
+}
+
+.header.scrolled .main-nav {
+  transform: translateY(-100%);
+}
+
+.contact-banner {
+  background: var(--accent);
+  color: var(--light);
+  text-align: center;
+  padding: 0.5rem;
+  width: 100%;
+  z-index: 1001; /* Keep banner always visible */
+}
+
+.hero-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6rem;
+  overflow: hidden;
+  background: var(--light);
+}
+
+.hero-section video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0;
+  animation: videoFadeIn 5s ease-in forwards;
+}
+
+@keyframes videoFadeIn {
+  from {
+    opacity: 0;
   }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+  to {
+    opacity: 1;
   }
-  
-  body {
-    line-height: 1.6;
-    color: var(--text);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: var(--primary);
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 8px;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.service-features {
+  display: grid;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.feature {
+  background: var(--light);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .top-header {
-    background: var(--primary);
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1001; /* Ensure it's above the nav */
-  }
-  
-  .phone-number {
-    color: var(--light);
-    text-decoration: none;
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-  
-  .phone-number:hover {
-    text-decoration: none; /* Explicitly remove hover underline */
-  }
-  
-  .phone-number i {
-    font-size: 2rem;
-    color: var(--accent); /* Orange icon */
-    text-decoration: none;
-    margin-top: 0.3rem;
-  }
-  
-  .phone-number span.number {
-    font-size: 2rem;
-    font-weight: 700;
-    transition: color 0.3s ease;
-    text-decoration: none; /* Ensure no underline on the number */
-  }
-  
-  .phone-number:hover span.number {
-    color: var(--accent); /* Only the number turns orange on hover */
-    text-decoration: none; /* Explicitly remove hover underline */
-  }
-  
-  .availability {
-    font-size: 1rem;
-    font-weight: 400;
-    opacity: 0.9;
-    margin-top: auto;
-    padding-bottom: 0.3rem;
-    color: var(--light); /* Ensure this stays white */
-    text-decoration: none; /* Ensure no underline on availability text */
-  }
-  
-  .main-nav {
-    background: var(--accent);
-    padding: 1rem 2rem;
-    transition: transform 0.3s ease;
-    position: relative;
-    z-index: 1000;
-  }
-  
-  .main-nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    list-style: none;
-    margin: 0 auto;
-    padding: 0;
-    width: 100%;
-  }
-  
-  .main-nav a {
-    color: var(--light);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-  }
-  
-  .main-nav a:hover {
-    color: var(--primary);
-  }
-  
-  /* Header scroll behavior */
-  .header.scrolled .top-header {
-    padding: 0.5rem 2rem;
-    transform-origin: top;
-  }
-  
-  .header.scrolled .main-nav {
-    transform: translateY(-100%);
-  }
-  
-  .contact-banner {
-    background: var(--accent);
-    color: var(--light);
-    text-align: center;
-    padding: 0.5rem;
-    width: 100%;
-    z-index: 1001; /* Keep banner always visible */
-  }
-  
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+}
+
+.feature h3 {
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.feature ul {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.feature ul li {
+  margin-bottom: 0.4rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.feature ul li:before {
+  content: "✓";
+  color: var(--accent);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--accent);
+  color: var(--light);
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background: #e67e22;
+}
+
+@media (max-width: 768px) {
   .hero-section {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 6rem;
-    overflow: hidden;
-    background: var(--light);
+    height: auto;
+    min-height: 60vh;
+    padding: 6rem 1rem 2rem;
   }
   
   .hero-section video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    z-index: 0;
-    opacity: 0;
-    animation: videoFadeIn 5s ease-in forwards;
-  }
-  
-  @keyframes videoFadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    color: var(--primary);
-    padding: 2rem;
-    background-color: rgba(255, 255, 255, 0.75);
-    border-radius: 8px;
+    display: none;
   }
   
   .hero-section h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .service-features {
-    display: grid;
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-  
-  .feature {
-    background: var(--light);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-    animation: fadeIn 0.5s ease-out;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .feature:hover {
-    transform: translateY(-5px);
-  }
-  
-  .feature h3 {
-    color: var(--primary);
-    margin-bottom: 0.75rem;
-    font-size: 1.25rem;
-  }
-  
-  .feature ul {
-    list-style: none;
-    margin-top: 1rem;
-  }
-  
-  .feature ul li {
-    margin-bottom: 0.4rem;
-    padding-left: 1.5rem;
-    position: relative;
-  }
-  
-  .feature ul li:before {
-    content: "✓";
-    color: var(--accent);
-    position: absolute;
-    left: 0;
-    font-weight: bold;
-  }
-  
-  .cta-button {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background: var(--accent);
-    color: var(--light);
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 600;
-    transition: background 0.3s ease;
-  }
-  
-  .cta-button:hover {
-    background: #e67e22;
-  }
-  
-  @media (max-width: 768px) {
-    .hero-section {
-      height: auto;
-      min-height: 60vh;
-      padding: 6rem 1rem 2rem;
-    }
-    
-    .hero-section video {
-      display: none;
-    }
-    
-    .hero-section h1 {
-      font-size: 2rem;
-    }
-    
-    .service-features {
-      grid-template-columns: 1fr;
-      padding: 2rem 1rem;
-    }
-  }
-  
-  .primary-service {
-    border-left: 4px solid var(--accent);
-    position: relative;
-  }
-  
-  .primary-service::before {
-    content: "Servizio Principale";
-    position: absolute;
-    top: -12px;
-    left: 1rem;
-    background: var(--accent);
-    color: var(--light);
-    padding: 0.2rem 1rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
-  
-  /* Enhance link styling */
-  a {
-    color: var(--accent);
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  
-  a:hover {
-    color: var(--primary);
-    text-decoration: underline;
-  }
-  
-  /* Style the navigation */
-  nav {
-    display: flex;
-    align-items: center;
-    padding: 1rem 2rem;
-    position: relative;
-  }
-  
-  .logo {
-    flex: 0 0 auto;
-    margin-right: 2rem;
-  }
-  
-  .logo-image {
-    width: 80px;
-    height: auto;
-    opacity: 0;
-    animation: fadeSlideIn 1s forwards;
-  }
-  
-  @keyframes fadeSlideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-  }
-  
-  .slogan {
-    background: var(--primary);
-    text-align: center;
-    padding: 0.5rem;
-    opacity: 0;
-    animation: fadeIn 1s 0.5s forwards;
-  }
-  
-  @keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-  }
-  
-  nav ul {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    margin-left: auto;
-  }
-  
-  nav a {
-    color: var(--light);
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-  }
-  
-  nav a:hover {
-    background: var(--secondary);
-    text-decoration: none;
-  }
-  
-  /* Responsive adjustments */
-  @media (min-width: 1024px) {
-    .service-features {
-      min-height: calc(100vh - 4rem);
-      align-items: start;
-    }
-    
-    .feature {
-      max-height: calc(100vh - 8rem);
-      overflow-y: auto;
-    }
-  }
-  
-  /* Ensure content is more compact */
-  .feature {
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .feature h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-  }
-  
-  .feature ul li {
-    margin-bottom: 0.4rem;
-  }
-  
-  .coverage-section {
-    padding: 4rem 2rem;
-    background: var(--secondary);
-    text-align: center;
-    margin-top: -2rem; /* Reduce gap on desktop */
-  }
-  
-  .coverage-section h2 {
-    color: var(--primary);
-    margin-bottom: 2rem;
     font-size: 2rem;
   }
   
-  .coverage-info {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  .service-features {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
+  }
+}
+
+.primary-service {
+  border-left: 4px solid var(--accent);
+  position: relative;
+}
+
+.primary-service::before {
+  content: "Servizio Principale";
+  position: absolute;
+  top: -12px;
+  left: 1rem;
+  background: var(--accent);
+  color: var(--light);
+  padding: 0.2rem 1rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Enhance link styling */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* Style the navigation */
+nav {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: relative;
+}
+
+.logo {
+  flex: 0 0 auto;
+  margin-right: 2rem;
+}
+
+.logo-image {
+  width: 80px;
+  height: auto;
+  opacity: 0;
+  animation: fadeSlideIn 1s forwards;
+}
+
+@keyframes fadeSlideIn {
+  from {
+      opacity: 0;
+      transform: translateX(-50px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+.slogan {
+  background: var(--primary);
+  text-align: center;
+  padding: 0.5rem;
+  opacity: 0;
+  animation: fadeIn 1s 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+      opacity: 1;
+  }
+}
+
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin-left: auto;
+}
+
+nav a {
+  color: var(--light);
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+nav a:hover {
+  background: var(--secondary);
+  text-decoration: none;
+}
+
+/* Responsive adjustments */
+@media (min-width: 1024px) {
+  .service-features {
+    min-height: calc(100vh - 4rem);
+    align-items: start;
   }
   
-  .base h3, .areas h3 {
-    color: var(--primary);
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
+  .feature {
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
   }
-  
-  .areas ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .areas ul li {
-    color: var(--text);
-    font-size: 1.2rem;
-  }
-  
-  footer {
-    background: var(--primary);
-    color: var(--light);
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  footer a {
-    color: var(--light);
-  }
-  
-  /* Add very light mask */
-  .hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.2); /* Very light white overlay */
-    z-index: 1;
-  }
-  
-  /* Adjust logo position if needed */
-  .logo {
-    position: relative;
-    left: 0;
-    margin-right: 2rem;
-    transform: translateX(-100%);
-    animation: slideIn 1s forwards;
-  }
-  
-  .logo-image {
-    width: 80px; /* Adjust size for proportion */
-    height: auto;
-  }
-  
-  @keyframes slideIn {
-    to {
-        transform: translateX(0);
-    }
-  }
-  
-  .slogan {
-    text-align: center;
-    font-size: 1.2rem;
-    color: var(--light);
-    margin-top: 1rem;
-    opacity: 0;
-    animation: fadeIn 2s 1s forwards; /* Delayed fade-in */
-  }
-  
-  @keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-  }
-  
-  /* Mobile optimizations */
-  @media (max-width: 768px) {
-    /* Keep video but adjust it */
-    .hero-section video {
-        display: block; /* Show video on mobile */
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-    }
-    
-    .hero-section {
-        height: 100vh;
-        min-height: auto;
-        padding: 4rem 1rem 2rem;
-        margin-top: 0;
-    }
-    
-    .hero-content {
-        width: 90%;
-        padding: 1.5rem;
-    }
-    
-    .hero-content h1 {
-        font-size: 1.8rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .cta-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        width: 100%;
-    }
-    
-    .cta-button {
-        width: 100%;
-        text-align: center;
-        padding: 0.8rem;
-    }
-    
-    /* Adjust service cards */
-    .service-features {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding: 2rem 1rem;
-    }
-    
-    .feature {
-        margin-bottom: 0;
-        padding: 1.2rem;
-    }
-    
-    /* Adjust header */
-    .header {
-        position: fixed;
-    }
-    
-    .contact-banner {
-        padding: 0.3rem;
-    }
-    
-    .phone-number {
-        font-size: 1.2rem;
-        margin: 0.5rem 0;
-    }
-    
-    nav {
-        padding: 0.8rem 1rem;
-    }
-    
-    nav ul {
-        gap: 1rem;
-    }
-    
-    /* Coverage section */
-    .coverage-section {
-        padding: 3rem 1.5rem;
-        margin-top: 0; /* Reset negative margin for mobile */
-    }
-    
-    .coverage-section h2 {
-        font-size: 1.75rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .coverage-info {
-        gap: 1.5rem;
-    }
-    
-    .base h3, .areas h3 {
-        font-size: 1.25rem;
-    }
-    
-    .areas ul li {
-        font-size: 1.1rem;
-    }
-    
-    .services-section {
-        padding: 4rem 1.5rem;
-    }
-    
-    .services-section h2 {
-        font-size: 1.75rem;
-        margin-bottom: 2rem;
-    }
+}
+
+/* Ensure content is more compact */
+.feature {
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.feature ul li {
+  margin-bottom: 0.4rem;
+}
+
+.coverage-section {
+  padding: 4rem 2rem;
+  background: var(--secondary);
+  text-align: center;
+  margin-top: -2rem; /* Reduce gap on desktop */
+}
+
+.coverage-section h2 {
+  color: var(--primary);
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.coverage-info {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.base h3, .areas h3 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.areas ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.areas ul li {
+  color: var(--text);
+  font-size: 1.2rem;
 }
 
 footer {
-    background: var(--primary);
-    color: var(--light);
-    padding: 2rem;
-    text-align: center;
+  background: var(--primary);
+  color: var(--light);
+  padding: 2rem;
+  text-align: center;
+}
+
+footer a {
+  color: var(--light);
+}
+
+/* Add very light mask */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.2); /* Very light white overlay */
+  z-index: 1;
+}
+
+/* Adjust logo position if needed */
+.logo {
+  position: relative;
+  left: 0;
+  margin-right: 2rem;
+  transform: translateX(-100%);
+  animation: slideIn 1s forwards;
+}
+
+.logo-image {
+  width: 80px; /* Adjust size for proportion */
+  height: auto;
+}
+
+@keyframes slideIn {
+  to {
+      transform: translateX(0);
+  }
+}
+
+.slogan {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--light);
+  margin-top: 1rem;
+  opacity: 0;
+  animation: fadeIn 2s 1s forwards; /* Delayed fade-in */
+}
+
+@keyframes fadeIn {
+  to {
+      opacity: 1;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  /* Keep video but adjust it */
+  .hero-section video {
+      display: block; /* Show video on mobile */
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+  }
+  
+  .hero-section {
+      height: 100vh;
+      min-height: auto;
+      padding: 4rem 1rem 2rem;
+      margin-top: 0;
+  }
+  
+  .hero-content {
+      width: 90%;
+      padding: 1.5rem;
+  }
+  
+  .hero-content h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+  }
+  
+  .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+  }
+  
+  .cta-button {
+      width: 100%;
+      text-align: center;
+      padding: 0.8rem;
+  }
+  
+  /* Adjust service cards */
+  .service-features {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 2rem 1rem;
+  }
+  
+  .feature {
+      margin-bottom: 0;
+      padding: 1.2rem;
+  }
+  
+  /* Adjust header */
+  .header {
+      position: fixed;
+  }
+  
+  .contact-banner {
+      padding: 0.3rem;
+  }
+  
+  .phone-number {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+  }
+  
+  nav {
+      padding: 0.8rem 1rem;
+  }
+  
+  nav ul {
+      gap: 1rem;
+  }
+  
+  /* Coverage section */
+  .coverage-section {
+      padding: 3rem 1.5rem;
+      margin-top: 0; /* Reset negative margin for mobile */
+  }
+  
+  .coverage-section h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+  }
+  
+  .coverage-info {
+      gap: 1.5rem;
+  }
+  
+  .base h3, .areas h3 {
+      font-size: 1.25rem;
+  }
+  
+  .areas ul li {
+      font-size: 1.1rem;
+  }
+  
+  .services-section {
+      padding: 4rem 1.5rem;
+  }
+  
+  .services-section h2 {
+      font-size: 1.75rem;
+      margin-bottom: 2rem;
+  }
+}
+
+footer {
+  background: var(--primary);
+  color: var(--light);
+  padding: 2rem;
+  text-align: center;
 }
 
 .contact-info h3 {
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
 }
 
 .contact-link {
-    color: var(--light);
-    text-decoration: none;
-    transition: color 0.3s ease;
-    font-size: 1.2rem;
-    display: inline-block;
-    margin: 0.5rem 0;
+  color: var(--light);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 1.2rem;
+  display: inline-block;
+  margin: 0.5rem 0;
 }
 
 .contact-link:hover {
-    color: var(--accent);
-    text-decoration: none;
+  color: var(--accent);
+  text-decoration: none;
 }
 
 .contact-info p {
-    margin: 0.5rem 0;
+  margin: 0.5rem 0;
 }
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
-    .contact-info h3 {
-        font-size: 1.5rem;
-    }
-    
-    .contact-link {
-        font-size: 1.1rem;
-    }
+  .contact-info h3 {
+      font-size: 1.5rem;
+  }
+  
+  .contact-link {
+      font-size: 1.1rem;
+  }
 }
 
 /* Specific breakpoints to handle layout transitions */
 @media (min-width: 1024px) {
-    /* Desktop */
-    .service-features {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2.5rem;
-        padding: 1.5rem 2rem 2rem; /* Added top padding to account for tag */
-    }
+  /* Desktop */
+  .service-features {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      padding: 1.5rem 2rem 2rem; /* Added top padding to account for tag */
+  }
 
-    .coverage-section {
-        padding-top: 2rem; /* Reduced top padding */
-    }
+  .coverage-section {
+      padding-top: 2rem; /* Reduced top padding */
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-    /* Tablet */
-    .service-features {
-        grid-template-columns: repeat(2, 1fr);
-        padding: 0 2rem 3rem;
-    }
+  /* Tablet */
+  .service-features {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0 2rem 3rem;
+  }
 }
 
 @media (max-width: 767px) {
-    /* Mobile */
-    .service-features {
-        grid-template-columns: 1fr;
-        padding: 1rem;
-    }
+  /* Mobile */
+  .service-features {
+      grid-template-columns: 1fr;
+      padding: 1rem;
+  }
 }
 
 .services-section {
-    background: var(--gray);
-    padding: 2rem 0;
+  background: var(--gray);
+  padding: 2rem 0;
 }
 
 .services-section h2 {
-    text-align: center;
-    color: var(--primary);
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    padding: 0 2rem;
+  text-align: center;
+  color: var(--primary);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  padding: 0 2rem;
 }
 
 .service-features {
-    display: grid;
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+  display: grid;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .feature {
-    background: var(--light);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-    position: relative;
-    height: auto;
+  background: var(--light);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  position: relative;
+  height: auto;
 }
 
 /* Desktop (1024px and above) */
 @media (min-width: 1024px) {
-    .services-section {
-        padding: 4rem 0 2rem;
-    }
-    
-    .services-section h2 {
-        font-size: 2.2rem;
-        margin-bottom: 3rem;
-    }
-    
-    .service-features {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2.5rem;
-        padding: 0 2rem 2rem;
-    }
-    
-    .feature {
-        min-height: 420px; /* Fixed height for consistent layout */
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .feature h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .feature p {
-        margin-bottom: 1.5rem;
-    }
-    
-    .feature ul {
-        margin-top: auto; /* Push list to bottom */
-    }
+  .services-section {
+      padding: 4rem 0 2rem;
+  }
+  
+  .services-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 3rem;
+  }
+  
+  .service-features {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      padding: 0 2rem 2rem;
+  }
+  
+  .feature {
+      min-height: 420px; /* Fixed height for consistent layout */
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .feature h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+  }
+  
+  .feature p {
+      margin-bottom: 1.5rem;
+  }
+  
+  .feature ul {
+      margin-top: auto; /* Push list to bottom */
+  }
 }
 
 /* Tablet (768px to 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
-    .services-section {
-        padding: 3rem 0 2rem;
-    }
-    
-    .services-section h2 {
-        font-size: 2rem;
-        margin-bottom: 2.5rem;
-    }
-    
-    .service-features {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-        padding: 0 2rem 2rem;
-    }
-    
-    .feature {
-        min-height: 380px;
-    }
+  .services-section {
+      padding: 3rem 0 2rem;
+  }
+  
+  .services-section h2 {
+      font-size: 2rem;
+      margin-bottom: 2.5rem;
+  }
+  
+  .service-features {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      padding: 0 2rem 2rem;
+  }
+  
+  .feature {
+      min-height: 380px;
+  }
 }
 
 /* Keep existing mobile styles untouched */
 @media (max-width: 767px) {
-    /* Your existing mobile styles here */
+  /* Your existing mobile styles here */
 }
 
 /* Desktop specific fixes */
 @media (min-width: 1024px) {
-    .service-features {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2.5rem;
-        padding: 1.5rem 2rem 2rem; /* Added top padding to account for tag */
-    }
-    
-    .feature {
-        position: relative;
-        margin-top: 1rem; /* Add space for the tag */
-        overflow: visible; /* Allow tag to overflow */
-    }
-    
-    .primary-service {
-        margin-top: 2rem; /* Extra space for the tag */
-    }
-    
-    .primary-service::before {
-        content: 'Servizio Principale';
-        position: absolute;
-        top: -2rem; /* Position it above the card */
-        left: 0;
-        background: var(--accent);
-        color: var(--light);
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        z-index: 1;
-        white-space: nowrap; /* Prevent text wrapping */
-    }
+  .service-features {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      padding: 1.5rem 2rem 2rem; /* Added top padding to account for tag */
+  }
+  
+  .feature {
+      position: relative;
+      margin-top: 1rem; /* Add space for the tag */
+      overflow: visible; /* Allow tag to overflow */
+  }
+  
+  .primary-service {
+      margin-top: 2rem; /* Extra space for the tag */
+  }
+  
+  .primary-service::before {
+      content: 'Servizio Principale';
+      position: absolute;
+      top: -2rem; /* Position it above the card */
+      left: 0;
+      background: var(--accent);
+      color: var(--light);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      z-index: 1;
+      white-space: nowrap; /* Prevent text wrapping */
+  }
 }
 
 .hero-logo {
-    width: 200px;
-    margin-bottom: 2rem;
+  width: 200px;
+  margin-bottom: 2rem;
 }
 
 .typewriter-container {
-    margin: 1.5rem 0;
+  margin: 1.5rem 0;
 }
 
 .typewriter-text {
-    overflow: hidden;
-    white-space: nowrap;
-    margin: 0;
-    opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0;
+  opacity: 0;
 }
 
 .typewriter-text.line1 {
-    animation: typing 1s steps(40, end) forwards,
-               blink-caret 0.75s step-end infinite;
+  animation: typing 1s steps(40, end) forwards,
+             blink-caret 0.75s step-end infinite;
 }
 
 .typewriter-text.line2 {
-    animation: typing 1s steps(40, end) 1s forwards,
-               blink-caret 0.75s step-end infinite;
+  animation: typing 1s steps(40, end) 1s forwards,
+             blink-caret 0.75s step-end infinite;
 }
 
 @keyframes typing {
-    from { 
-        width: 0;
-        opacity: 1;
-    }
-    to { 
-        width: 100%;
-        opacity: 1;
-    }
+  from { 
+      width: 0;
+      opacity: 1;
+  }
+  to { 
+      width: 100%;
+      opacity: 1;
+  }
 }
 
 @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: var(--accent); }
+  from, to { border-color: transparent }
+  50% { border-color: var(--accent); }
 }
 
 /* Mobile header adjustments */
 @media (max-width: 768px) {
-    .top-header {
-        padding: 0.5rem 1rem;
-    }
-    
-    .phone-number {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.2rem;
-    }
-    
-    .number-container {
-        display: flex;
-        flex-direction: row; /* Explicitly keep icon and number in row */
-        align-items: center;
-        gap: 0.5rem;
-        white-space: nowrap; /* Prevent number from wrapping */
-    }
-    
-    .phone-number i {
-        font-size: 1.2rem;
-        margin-top: 0; /* Reset margin for mobile */
-    }
-    
-    .phone-number span.number {
-        font-size: 1.2rem;
-    }
-    
-    .availability {
-        font-size: 0.8rem;
-        margin-top: 0; /* Reset margin for mobile */
-        padding-bottom: 0;
-    }
+  .top-header {
+      padding: 0.5rem 1rem;
+  }
+  
+  .phone-number {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+  }
+  
+  .number-container {
+      display: flex;
+      flex-direction: row; /* Explicitly keep icon and number in row */
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap; /* Prevent number from wrapping */
+  }
+  
+  .phone-number i {
+      font-size: 1.2rem;
+      margin-top: 0; /* Reset margin for mobile */
+  }
+  
+  .phone-number span.number {
+      font-size: 1.2rem;
+  }
+  
+  .availability {
+      font-size: 0.8rem;
+      margin-top: 0; /* Reset margin for mobile */
+      padding-bottom: 0;
+  }
 }
 
 /* Hero content adjustments */
 .hero-logo {
-    margin-bottom: 0; /* Remove bottom margin */
+  margin-bottom: 0; /* Remove bottom margin */
 }
 
 .hero-content p.delivery-time {
-    opacity: 0;
-    animation: fadeIn 1s ease 2s forwards; /* Start after typewriter (1s + 1s) */
-    margin: 1rem 0;
-    font-size: clamp(0.5rem, 3vw, 1rem); /* Use clamp for scaling */
-    color: var(--primary); /* Blue color */
+  opacity: 0;
+  animation: fadeIn 1s ease 2s forwards; /* Start after typewriter (1s + 1s) */
+  margin: 1rem 0;
+  font-size: clamp(0.5rem, 3vw, 1rem); /* Use clamp for scaling */
+  color: var(--primary); /* Blue color */
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* Adjust scroll offset for section anchors */
 html {
-    scroll-padding-top: 120px; /* Adjust this value based on your header height */
+  scroll-padding-top: 120px; /* Adjust this value based on your header height */
 }
 
 /* Base scroll padding for desktop */
 html {
-    scroll-padding-top: 140px; /* Increased base value to account for both header panels */
+  scroll-padding-top: 140px; /* Increased base value to account for both header panels */
 }
 
 /* Adjust scroll padding for different screen sizes */
 @media (max-width: 1024px) {
-    html {
-        scroll-padding-top: 130px;
-    }
+  html {
+      scroll-padding-top: 130px;
+  }
 }
 
 @media (max-width: 768px) {
-    html {
-        scroll-padding-top: 110px;
-    }
+  html {
+      scroll-padding-top: 110px;
+  }
 }
 
 @media (max-width: 480px) {
-    html {
-        scroll-padding-top: 90px;
-    }
+  html {
+      scroll-padding-top: 90px;
+  }
 }
 
 /* Add some spacing to the top of each section */
 #servizi, #copertura, #contatti {
-    padding-top: 2rem;
+  padding-top: 2rem;
 }
 
 /* Ensure sections have enough content padding */
 .services-section, .coverage-section {
-    padding-top: 4rem;
+  padding-top: 4rem;
 }
 
 /* Mobile header adjustments */
 @media (max-width: 768px) {
-    .phone-number {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.2rem;
-    }
+  .phone-number {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+  }
 
-    /* Container for icon and number */
-    .phone-number .number-container {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
+  /* Container for icon and number */
+  .phone-number .number-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+  }
 
-    .phone-number i {
-        font-size: 1.2rem;
-        margin-top: 0; /* Reset margin for mobile */
-    }
+  .phone-number i {
+      font-size: 1.2rem;
+      margin-top: 0; /* Reset margin for mobile */
+  }
 
-    .phone-number span.number {
-        font-size: 1.2rem;
-    }
-    
-    .availability {
-        font-size: 0.8rem;
-        margin-top: 0; /* Reset margin for mobile */
-        padding-bottom: 0;
-    }
+  .phone-number span.number {
+      font-size: 1.2rem;
+  }
+  
+  .availability {
+      font-size: 0.8rem;
+      margin-top: 0; /* Reset margin for mobile */
+      padding-bottom: 0;
+  }
 }
 
 /* Mobile hero section adjustments for smaller screens */
 @media (max-width: 375px) {
-    .hero-section {
-        height: auto;
-        padding: 5rem 1rem 2rem; /* Adjust top padding */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .hero-content {
-        width: 100%;
-        padding: 0.5rem;
-        margin-top: 0;
-        background-color: rgba(255, 255, 255, 0.85);
-    }
+  .hero-section {
+      height: auto;
+      padding: 5rem 1rem 2rem; /* Adjust top padding */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .hero-content {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0;
+      background-color: rgba(255, 255, 255, 0.85);
+  }
 
-    .hero-logo {
-        width: 100px; /* Adjust logo size */
-        margin-bottom: 0.5rem;
-    }
+  .hero-logo {
+      width: 100px; /* Adjust logo size */
+      margin-bottom: 0.5rem;
+  }
 
-    .hero-section h1 {
-        font-size: 1.2rem; /* Reduce font size */
-        margin-bottom: 0.5rem;
-    }
+  .hero-section h1 {
+      font-size: 1.2rem; /* Reduce font size */
+      margin-bottom: 0.5rem;
+  }
 
-    .typewriter-text {
-        font-size: 0.8rem; /* Reduce font size */
-    }
+  .typewriter-text {
+      font-size: 0.8rem; /* Reduce font size */
+  }
 
-    .cta-buttons {
-        flex-direction: column;
-        gap: 0.3rem;
-    }
+  .cta-buttons {
+      flex-direction: column;
+      gap: 0.3rem;
+  }
 
-    .cta-button {
-        font-size: 0.7rem; /* Reduce font size */
-        padding: 0.5rem 1rem;
-    }
+  .cta-button {
+      font-size: 0.7rem; /* Reduce font size */
+      padding: 0.5rem 1rem;
+  }
 
-    .header {
-        padding: 0.5rem 1rem; /* Reduce header height */
-    }
+  .header {
+      padding: 0.5rem 1rem; /* Reduce header height */
+  }
 
-    .main-nav ul {
-        gap: 0.5rem;
-    }
+  .main-nav ul {
+      gap: 0.5rem;
+  }
 
-    .main-nav a {
-        font-size: 0.8rem; /* Reduce font size */
-    }
+  .main-nav a {
+      font-size: 0.8rem; /* Reduce font size */
+  }
 }
 
 /* Mobile hero section adjustments for screens up to 500px */
 @media (max-width: 500px) {
-    .top-header {
-        height: 10vh; /* Set blue banner height */
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        margin: 0; /* Remove any margins */
-        transition: height 0.3s ease; /* Smooth transition for scroll */
-    }
+  .top-header {
+      height: 10vh; /* Set blue banner height */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      margin: 0; /* Remove any margins */
+      transition: height 0.3s ease; /* Smooth transition for scroll */
+  }
 
-    .main-nav {
-        position: fixed;
-        top: 10vh; /* Attach to bottom of blue panel */
-        left: 0;
-        width: 100%;
-        background: var(--accent);
-        z-index: 999;
-        transition: transform 0.3s ease; /* Smooth transition */
-    }
+  .main-nav {
+      position: fixed;
+      top: 10vh; /* Attach to bottom of blue panel */
+      left: 0;
+      width: 100%;
+      background: var(--accent);
+      z-index: 999;
+      transition: transform 0.3s ease; /* Smooth transition */
+  }
 
-    .hero-section {
-        margin-top: 15vh; /* Offset for fixed header and nav */
-        height: calc(100vh - 15vh); /* Fill remaining viewport height */
-        padding: 2rem 1rem; /* Adjust padding */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .hero-content {
-        width: 100%;
-        padding: 0.5rem;
-        background-color: rgba(255, 255, 255, 0.85);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+  .hero-section {
+      margin-top: 15vh; /* Offset for fixed header and nav */
+      height: calc(100vh - 15vh); /* Fill remaining viewport height */
+      padding: 2rem 1rem; /* Adjust padding */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .hero-content {
+      width: 100%;
+      padding: 0.5rem;
+      background-color: rgba(255, 255, 255, 0.85);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
 
-    .hero-logo {
-        width: 30vw; /* Adjust logo size */
-        margin-bottom: 0; /* Remove bottom margin */
-    }
+  .hero-logo {
+      width: 30vw; /* Adjust logo size */
+      margin-bottom: 0; /* Remove bottom margin */
+  }
 
-    .hero-section h1 {
-        font-size: 6vw; /* Use viewport width for scaling */
-        margin-bottom: 0.5rem;
-    }
+  .hero-section h1 {
+      font-size: 6vw; /* Use viewport width for scaling */
+      margin-bottom: 0.5rem;
+  }
 
-    .typewriter-text {
-        font-size: 4vw; /* Use viewport width for scaling */
-    }
+  .typewriter-text {
+      font-size: 4vw; /* Use viewport width for scaling */
+  }
 
-    .cta-buttons {
-        flex-direction: column;
-        gap: 0.3rem;
-    }
+  .cta-buttons {
+      flex-direction: column;
+      gap: 0.3rem;
+  }
 
-    .cta-button {
-        font-size: 3vw; /* Use viewport width for scaling */
-        padding: 0.5rem 1rem;
-    }
+  .cta-button {
+      font-size: 3vw; /* Use viewport width for scaling */
+      padding: 0.5rem 1rem;
+  }
 
-    .header.scrolled .top-header {
-        height: 7vh; /* Reduce height on scroll */
-    }
+  .header.scrolled .top-header {
+      height: 7vh; /* Reduce height on scroll */
+  }
 
-    .header.scrolled .main-nav {
-        transform: translateY(-150%); /* Move further up */
-    }
+  .header.scrolled .main-nav {
+      transform: translateY(-150%); /* Move further up */
+  }
 
-    .header.scrolled .phone-number,
-    .header.scrolled .availability {
-        font-size: 0.8rem; /* Adjust scale down factor */
-    }
+  .header.scrolled .phone-number,
+  .header.scrolled .availability {
+      font-size: 0.8rem; /* Adjust scale down factor */
+  }
 
-    .header.scrolled .number {
-        font-size: 0.9rem; /* Adjust scale down factor */
-    }
+  .header.scrolled .number {
+      font-size: 0.9rem; /* Adjust scale down factor */
+  }
 
-    .main-nav ul {
-        gap: 0.5rem;
-    }
+  .main-nav ul {
+      gap: 0.5rem;
+  }
 
-    .main-nav a {
-        font-size: 0.8rem; /* Reduce font size */
-    }
+  .main-nav a {
+      font-size: 0.8rem; /* Reduce font size */
+  }
+}
+
+.consent-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary); /* Use brand primary color */
+    color: var(--light);
+    text-align: center;
+    padding: 1rem;
+    z-index: 10000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.consent-banner p {
+    margin: 0;
+    flex: 1;
+    padding-right: 1rem;
+}
+
+.consent-banner button {
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin-left: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#accept-btn {
+    background-color: var(--accent); /* Use brand accent color */
+    color: var(--light);
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#accept-btn:hover {
+    background-color: darken(var(--accent), 10%);
+    transform: scale(1.05);
+}
+
+#refuse-btn {
+    background-color: var(--primary); /* Same as banner background */
+    color: var(--light);
+    border: 1px solid var(--light); /* White outline */
+}
+
+#refuse-btn:hover {
+    background-color: lighten(var(--primary), 10%);
+    transform: scale(1.05);
+}
+
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 1000;
+}
+
+.whatsapp-float i {
+    margin-top: 16px;
 }
