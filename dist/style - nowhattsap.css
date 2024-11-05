@@ -1118,7 +1118,7 @@ html {
     color: var(--light);
     text-align: center;
     padding: 1rem;
-    z-index: 1000;
+    z-index: 10000;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1162,22 +1162,4 @@ html {
 #refuse-btn:hover {
     background-color: lighten(var(--primary), 10%);
     transform: scale(1.05);
-}
-
-.whatsapp-float {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    right: 40px;
-    background-color: #25d366;
-    color: #FFF;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 30px;
-    box-shadow: 2px 2px 3px #999;
-    z-index: 1001;
-}
-
-.whatsapp-float i {
-    margin-top: 16px;
 }
