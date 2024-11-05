@@ -61,3 +61,19 @@ function consentRefused() {
         'analytics_storage': 'denied'
     });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const consentBanner = document.querySelector('.consent-banner');
+    const whatsappButton = document.querySelector('.whatsapp-float');
+
+    function adjustWhatsAppPosition() {
+        const bannerHeight = consentBanner.offsetHeight;
+        whatsappButton.style.bottom = `${bannerHeight + 20}px`;
+    }
+
+    // Adjust position on load
+    adjustWhatsAppPosition();
+
+    // Adjust position on window resize
+    window.addEventListener('resize', adjustWhatsAppPosition);
+});
