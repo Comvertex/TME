@@ -246,20 +246,7 @@ body {
   pointer-events: auto; /* Ensure pointer events are enabled */
   z-index: 1000; /* Ensure it's above other elements */
 }
-.cta-button {
-  width: 100%;
-  text-align: center;
-  padding: 0.8rem;
-}
 
-.cta-button {
-font-size: 0.7rem; /* Reduce font size */
-padding: 0.5rem 1rem;
-}
-.cta-button {
-font-size: 3vw; /* Use viewport width for scaling */
-padding: 0.5rem 1rem;
-}
 .cta-button:hover {
   background: #e67e22;
 }
@@ -537,6 +524,12 @@ footer a {
       flex-direction: column;
       gap: 1rem;
       width: 100%;
+  }
+  
+  .cta-button {
+      width: 100%;
+      text-align: center;
+      padding: 0.8rem;
   }
   
   /* Adjust service cards */
@@ -1008,6 +1001,11 @@ html {
       gap: 0.3rem;
   }
 
+  .cta-button {
+      font-size: 0.7rem; /* Reduce font size */
+      padding: 0.5rem 1rem;
+  }
+
   .header {
       padding: 0.5rem 1rem; /* Reduce header height */
   }
@@ -1080,6 +1078,11 @@ html {
   .cta-buttons {
       flex-direction: column;
       gap: 0.3rem;
+  }
+
+  .cta-button {
+      font-size: 3vw; /* Use viewport width for scaling */
+      padding: 0.5rem 1rem;
   }
 
   .header.scrolled .top-header {
@@ -1179,4 +1182,8 @@ html {
 
 .whatsapp-float i {
     margin-top: 16px;
+}
+
+.cta-button {
+    pointer-events: auto;
 }
