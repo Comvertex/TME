@@ -236,20 +236,30 @@ body {
 
 .cta-button {
   display: inline-block;
-  width: 100%;
-  text-align: center;
-  padding: 0.5rem 1rem;
+  padding: 1rem 2rem;
   background: var(--accent);
   color: var(--light);
   text-decoration: none;
   border-radius: 4px;
   font-weight: 600;
   transition: background 0.3s ease;
-  pointer-events: auto;
-  z-index: 1000;
-  font-size: 3vw; /* Use viewport width for scaling */
+  pointer-events: auto; /* Ensure pointer events are enabled */
+  z-index: 1000; /* Ensure it's above other elements */
+}
+.cta-button {
+  width: 100%;
+  text-align: center;
+  padding: 0.8rem;
 }
 
+.cta-button {
+font-size: 0.7rem; /* Reduce font size */
+padding: 0.5rem 1rem;
+}
+.cta-button {
+font-size: 3vw; /* Use viewport width for scaling */
+padding: 0.5rem 1rem;
+}
 .cta-button:hover {
   background: #e67e22;
 }
