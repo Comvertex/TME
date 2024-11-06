@@ -95,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.querySelectorAll('.cta-button').forEach(button => {
     button.addEventListener('click', function(event) {
-        // Ensure event.preventDefault() is not called here
+        // Comment out any preventDefault calls
+        // event.preventDefault();
     });
 });
