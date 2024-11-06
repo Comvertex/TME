@@ -236,15 +236,18 @@ body {
 
 .cta-button {
   display: inline-block;
-  padding: 1rem 2rem;
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem 1rem;
   background: var(--accent);
   color: var(--light);
   text-decoration: none;
   border-radius: 4px;
   font-weight: 600;
   transition: background 0.3s ease;
-  pointer-events: auto; /* Ensure pointer events are enabled */
-  z-index: 1000; /* Ensure it's above other elements */
+  pointer-events: auto;
+  z-index: 1000;
+  font-size: 3vw; /* Use viewport width for scaling */
 }
 
 .cta-button:hover {
@@ -524,12 +527,6 @@ footer a {
       flex-direction: column;
       gap: 1rem;
       width: 100%;
-  }
-  
-  .cta-button {
-      width: 100%;
-      text-align: center;
-      padding: 0.8rem;
   }
   
   /* Adjust service cards */
@@ -1001,11 +998,6 @@ html {
       gap: 0.3rem;
   }
 
-  .cta-button {
-      font-size: 0.7rem; /* Reduce font size */
-      padding: 0.5rem 1rem;
-  }
-
   .header {
       padding: 0.5rem 1rem; /* Reduce header height */
   }
@@ -1078,11 +1070,6 @@ html {
   .cta-buttons {
       flex-direction: column;
       gap: 0.3rem;
-  }
-
-  .cta-button {
-      font-size: 3vw; /* Use viewport width for scaling */
-      padding: 0.5rem 1rem;
   }
 
   .header.scrolled .top-header {
