@@ -92,10 +92,3 @@ document.addEventListener('DOMContentLoaded', function() {
         adjustWhatsAppPosition();
     });
 });
-
-document.querySelectorAll('.cta-button').forEach(button => {
-    button.addEventListener('click', function(event) {
-        // Ensure event.preventDefault() is not called here
-        // event.preventDefault();
-    });
-});
