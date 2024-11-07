@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Adjust position on window resize
     window.addEventListener('resize', adjustWhatsAppPosition);
 
-    // Adjust position when consent is given or refused
+    // Adjust position when consent is given or refuseds
     document.getElementById('accept-btn').addEventListener('click', function() {
         consentBanner.style.display = 'none';
         adjustWhatsAppPosition();

@@ -243,6 +243,8 @@ body {
   border-radius: 4px;
   font-weight: 600;
   transition: background 0.3s ease;
+  pointer-events: auto; /* Ensure pointer events are enabled */
+  z-index: 900; /* Ensure it's above other elements */
 }
 
 .cta-button:hover {
@@ -1180,4 +1182,8 @@ html {
 
 .whatsapp-float i {
     margin-top: 16px;
+}
+
+.cta-button {
+    pointer-events: auto;
 }
