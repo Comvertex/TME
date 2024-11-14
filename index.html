@@ -49,23 +49,6 @@
         })(window,document,'script','dataLayer','GTM-KCVV7X9L');
     </script>
     <!-- End Google Tag Manager -->
-
-    <!-- Helper function to delay opening a URL until a gtag event is sent. -->
-    <script>
-      function gtagSendEvent(url) {
-        var callback = function () {
-          if (typeof url === 'string') {
-            window.location = url;
-          }
-        };
-        gtag('event', 'conversion_event_contact', {
-          'event_callback': callback,
-          'event_timeout': 2000,
-          // <event_parameters>
-        });
-        return false;
-      }
-    </script>
 </head>
 
 <body>
