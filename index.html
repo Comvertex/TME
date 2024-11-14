@@ -49,6 +49,15 @@
         })(window,document,'script','dataLayer','GTM-KCVV7X9L');
     </script>
     <!-- End Google Tag Manager -->
+    <script>
+        function gtagSendEvent(action) {
+            gtag('event', 'click', {
+                'event_category': 'contact',
+                'event_label': action
+            });
+            return true; // Ensure the link action proceeds
+        }
+    </script>
 </head>
 
 <body>
