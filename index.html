@@ -36,6 +36,7 @@
             'ad_personalization': 'granted',
             'analytics_storage': 'granted'
             });
+          localStorage.setItem('cookieConsent', 'accepted');
         }
         function consentRefused() {
         gtag('consent', 'update', {
@@ -44,6 +45,7 @@
             'ad_personalization': 'denied',
             'analytics_storage': 'denied'
             });
+         localStorage.setItem('cookieConsent', 'refused');
         }
     </script>
     <!-- Google Tag Manager -->
