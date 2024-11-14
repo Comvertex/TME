@@ -23,21 +23,27 @@
       function gtag(){dataLayer.push(arguments);}
 
       // Set default consent to 'denied' as a placeholder
-      gtag('consent', 'default', {
+        gtag('consent', 'default', {
         'ad_storage': 'denied',
         'ad_user_data': 'denied',
         'ad_personalization': 'denied',
         'analytics_storage': 'denied'
-      });
-    </script>
-    <script>
+            });
         function consentGranted() {
           gtag('consent', 'update', {
             'ad_storage': 'granted',
             'ad_user_data': 'granted',
             'ad_personalization': 'granted',
             'analytics_storage': 'granted'
-          });
+            });
+        }
+        function consentRefused() {
+        gtag('consent', 'update', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied'
+            });
         }
     </script>
     <!-- Google Tag Manager -->
@@ -210,8 +216,8 @@
 
     <div id="consent-banner" class="consent-banner">
         <p>Questo sito utilizza i cookie per migliorare l'esperienza utente. Continuando a navigare, accetti l'uso dei cookie.</p>
-        <button id="accept-btn">Accetta</button>
-        <button id="refuse-btn">Rifiuta</button>
+        <button id="accept-btn" onclick="consentGranted()">Accetta</button>
+        <button id="refuse-btn" onclick="consentRefused()">Rifiuta</button>
     </div>
 
     <a href="https://wa.me/+393513768842" class="whatsapp-float" target="_blank">
