@@ -2,4 +2,4 @@ User-agent: *
 Disallow:
 
 Sitemap: https://www.taximerciexpress.it/sitemap.xml
-Test Page: https://www.taximerciexpress.it/test.html
+Test Page: https://www.taximerciexpress.it/test
