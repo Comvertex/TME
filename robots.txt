@@ -1,5 +1,4 @@
 User-agent: *
-Disallow:
+Disallow: /test
 
 Sitemap: https://www.taximerciexpress.it/sitemap.xml
-Test Page: https://www.taximerciexpress.it/test
