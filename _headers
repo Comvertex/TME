@@ -1,0 +1,6 @@
+/ 
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+
+/test.html
+  X-Robots-Tag: noindex
