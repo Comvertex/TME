@@ -63,11 +63,11 @@
     }
     </script>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Inline SVG icon sizing (replaces Font Awesome CDN) -->
+    <!-- Self-hosted fonts + inline SVG icon sizing (no third-party calls) -->
     <style>
+      @font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/montserrat-400.woff2') format('woff2')}
+      @font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/montserrat-600.woff2') format('woff2')}
+      @font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url('/assets/fonts/montserrat-700.woff2') format('woff2')}
       .icon{display:inline-block;vertical-align:middle;fill:currentColor}
       .phone-number .number-container{display:flex;align-items:center;gap:.5rem}
       .phone-number .icon{width:2rem;height:2rem;color:var(--accent)}
