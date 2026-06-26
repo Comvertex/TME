@@ -1,3 +1,26 @@
+/* Self-hosted Montserrat (Fontsource, MIT) — no third-party font requests */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/montserrat-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/assets/fonts/montserrat-latin-600-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/fonts/montserrat-latin-700-normal.woff2') format('woff2');
+}
+
 :root {
   /* Professional, trustworthy color palette */
   --primary: #1a4b84;     /* Deep blue - represents trust and reliability */
