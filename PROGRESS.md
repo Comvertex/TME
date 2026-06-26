@@ -25,6 +25,14 @@
 
 ---
 
+## 2026-06-26 — Phase B: Figma library + redesign — STARTED, BLOCKED (Figma rate limit) — Claude Code
+- Did: read `docs/content-brief.md` + `docs/design-system.md`. Created Figma file **"TME — Website Redesign (Phase B)"** (key `ZEvbN43GQHR6pHCbQ4aMAd`, https://www.figma.com/design/ZEvbN43GQHR6pHCbQ4aMAd). Stood up the **token library** from the approved set: variable collection "TME Tokens" (9 colour, 9 spacing, 4 radii vars), 4 elevation effect styles, 9 Montserrat text styles. Built the **two-tier header + hero** with lifted dual-register copy (eyebrow FIRENZE·TOSCANA·ITALIA·EUROPA; H1 "Affidabilità che conta, velocità che sorprende."; subline "dal singolo capo alla collezione intera…"; promise chips 30min/24·7·365/un solo referente/prezzo tutto compreso; CTAs Richiedi Preventivo + Chiama ora; ★5,0·63 Google badge). Hero looks strong (screenshot captured).
+- Decisions taken (Matteo): legal footer line = include as placeholder, wording to be refined by him; reviews block = **static curated carousel** (no third-party JS, keeps GTM-only profile).
+- **BLOCKED:** hit the **Figma MCP tool-call limit on the Starter plan** mid-build. Remaining sections (dual-register services, Google-reviews block, coverage + plane motif, why-TME/mission-control, footer w/ legal line) are designed but not yet built in Figma. Also a known 1-call fix pending: a frame-helper bug left buttons/chips/header bars without padding (patch written, not yet applied — blocked by the same limit).
+- Housekeeping done: deleted stale `improvements/seo-deglobal` branch (repo now only `main`).
+- Status: **in progress, blocked.** No Phase C code. Figma direction presented to Matteo for review (header+hero + full written spec).
+- Needs from Matteo: (1) raise the Figma plan / confirm when the MCP call budget resets so I can finish the build; (2) review the hero + direction. Hero-video compression = planned (ffmpeg recipe ready), to run in Phase C via branch→preview.
+
 ## 2026-06-26 — Phase A: design-system extraction — FOR REVIEW — Claude Code
 - Did: read the shipped code in full (`index.html`, `dist/style.css` @ 1210 lines, `dist/script.js`) and extracted a faithful design system → `docs/design-system.md`. Covers colour tokens (6 defined + 9 hardcoded literals catalogued), type scale, spacing, radii, shadows, z-index, motion/keyframes, breakpoints, an 11-component inventory, dead CSS, and a numbered debt list. Each "current" value is taken from code; a "Proposed" normalized token set is included and clearly marked (not applied).
 - Key debt surfaced: invalid `darken()`/`lighten()` SASS in plain CSS → consent-button hovers silently dead; `@keyframes fadeIn` defined 5×; conflicting hero-video display on mobile (`display:none` then `:block` both at ≤768); 7 inconsistent breakpoints; hardcoded colours; `.feature.highlight` has no visual treatment; dead selectors (`.contact-banner`, `.slogan`, `.logo`).
