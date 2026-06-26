@@ -25,6 +25,16 @@
 
 ---
 
+## 2026-06-26 — Phase B: Figma library + redesign — COMPLETE, FOR REVIEW — Claude Code
+- Did: finished the full Figma delivery in `ZEvbN43GQHR6pHCbQ4aMAd` (Professional plan, limit lifted). Fixed the padding bug. Structured the file as **🎨 Design System** (tokens + components) + **🏠 Homepage** (composed page).
+- Token library: variable collection "TME Tokens" (9 colour / 9 spacing / 4 radii), 4 elevation effect styles, 9 Montserrat text styles.
+- Reusable, **token-variable-bound components**: `Button` (variant set: Primary/Secondary/Outline), `PromiseChip`, `ServiceCard` (variant set: Featured No/Yes), `ReviewCard`, `Nav`, `Footer`. Colours + radii bound to variables → a token edit propagates to every instance and to future surfaces.
+- Composed homepage (1440) from instances: Nav · hero (real video **poster** still extracted via ffmpeg + blue legibility scrim, white text legible) · promise/trust strip (un solo referente · 30 min · 24/7/365 · monitoraggio · notifiche · prezzo tutto compreso) · **dual-register services** led by the featured "Privati & urgenze quotidiane / NESSUN INCARICO TROPPO PICCOLO" card, then aziende & negozi, moda & lusso (OBC), arte & allestimenti, eventi & hospitality, urgenze & spedizioni critiche — capability/sector language, **no client names** · **Google reviews** block (★5,0 / 63 badge + static curated carousel of placeholder reviews) · coverage "Da Firenze, ovunque serva" (Firenze · Toscana · Italia · Europa + plane/OBC motif) · why-TME mission-control band (owner-led, un solo referente) · footer (full NAP + placeholder legal line).
+- Guardrails honored: single page, NAP exact, no prices, no client names, no unheld certs; reviews stay zero-third-party (static).
+- Known minor: hero CTAs/chips kept as bespoke hero treatment (translucent on dark) rather than Button/PromiseChip instances — can be linked to components if central control there is wanted.
+- Status: **complete, for review.** Screenshots captured per section; full page in Figma. No Phase C code yet.
+- Needs from Matteo: review the composed page; refine the legal-line wording; provide the **Google Place ID** (for Phase C reviews wiring). Phase C will sync Figma variables → `tokens.css` via the MCP and translate the page to code via branch→preview.
+
 ## 2026-06-26 — Phase B: Figma library + redesign — STARTED, BLOCKED (Figma rate limit) — Claude Code
 - Did: read `docs/content-brief.md` + `docs/design-system.md`. Created Figma file **"TME — Website Redesign (Phase B)"** (key `ZEvbN43GQHR6pHCbQ4aMAd`, https://www.figma.com/design/ZEvbN43GQHR6pHCbQ4aMAd). Stood up the **token library** from the approved set: variable collection "TME Tokens" (9 colour, 9 spacing, 4 radii vars), 4 elevation effect styles, 9 Montserrat text styles. Built the **two-tier header + hero** with lifted dual-register copy (eyebrow FIRENZE·TOSCANA·ITALIA·EUROPA; H1 "Affidabilità che conta, velocità che sorprende."; subline "dal singolo capo alla collezione intera…"; promise chips 30min/24·7·365/un solo referente/prezzo tutto compreso; CTAs Richiedi Preventivo + Chiama ora; ★5,0·63 Google badge). Hero looks strong (screenshot captured).
 - Decisions taken (Matteo): legal footer line = include as placeholder, wording to be refined by him; reviews block = **static curated carousel** (no third-party JS, keeps GTM-only profile).
