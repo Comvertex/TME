@@ -121,3 +121,8 @@
   3. Tighter hero top gap on mobile (min-height 70vh, align flex-start, padding-top 30) + larger/bolder brand wordmark (23px) lifted toward the top.
 - Extended scripts/check-overflow.mjs to also test 360px. Guard PASS @360/375/390 (both banner states) + desktop 1280; zero horizontal scroll throughout. Eyeballed headless 360 + 375 screenshots: one-row header no clip, visible gradient with legible subline, brand bigger/higher, reduced top gap.
 - Commit `2b3c96b` pushed to `redesign/homepage-v2` → PR #5 preview. Still NOT merged — gate on the preview.
+
+## 2026-06-27 — Hero vertical-center + ~20% bigger header CTA — Claude Code
+- From Matteo's real mobile screenshot: hero content was top-aligned leaving a tall empty image band below the CTAs. Fixed: mobile hero align-items center + symmetric 28px padding in a 70vh hero → content vertically centred (verified gapAbove==gapBelow=28 at 412px).
+- Header CTA enlarged ~20% (font 12.5→15px). Tightened row (gap 6, navbar padding 8, toggle 36) so the full "Richiedi Preventivo" still fits one row at 360px with 24px free (12px slack after gaps) — not borderline. Guard PASS @360/375/390 (both banner states) + desktop 1280; zero horizontal scroll. Eyeballed 375 + 412 screenshots.
+- Commit `37e3921` pushed to `redesign/homepage-v2` → PR #5 preview. Still NOT merged — gate on the preview.
