@@ -926,6 +926,7 @@ img { display: block; max-width: 100%; }
   .reviews .section-h2,
   .why .section-h2 { font-size: 28px; }
 
+  .topbar__inner { display: flex; justify-content: center; }
   .topbar__reviews,
   .topbar__status { display: none; }
 
