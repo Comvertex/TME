@@ -113,3 +113,11 @@
 - Bigger mobile top bar: phone 20px, "Disponibili 24/7/365" 14px, min-height 80px.
 - Extended scripts/check-overflow.mjs (full CTA label assert + CTA-not-clipped-by-navbar + hero brand present + phone >=18px). Guard PASS at true 375/390 (both banner states) + desktop 1280; zero horizontal scroll throughout. Eyeballed a headless 375 screenshot: scrim legible, brand visible, full CTA on its own row, bigger top bar.
 - Commit `71c94b5` pushed to `redesign/homepage-v2` → PR #5 preview. Still NOT merged — gate on the preview.
+
+## 2026-06-27 — Header CTA inline+compact; stronger gradient scrim; tighter hero top — Claude Code
+- Top blue bar left as-is (Matteo: good). Three changes:
+  1. Reverted the two-row header → one row: logo + compact full-label "Richiedi Preventivo" (12.5px / 9×12 padding) + hamburger. Label NOT shortened. Measured 35px free space at 360px (logo 106 + CTA 153 + toggle 38 of 332 available) — comfortable, not borderline.
+  2. Hero scrim back to a VISIBLE gradient but stronger than the original: 105deg .99→.97 50%→.85 74%→.45 90%→.20 100% — near-opaque white over the text, image revealing on the right; lighter subline stays legible. Desktop scrim unchanged.
+  3. Tighter hero top gap on mobile (min-height 70vh, align flex-start, padding-top 30) + larger/bolder brand wordmark (23px) lifted toward the top.
+- Extended scripts/check-overflow.mjs to also test 360px. Guard PASS @360/375/390 (both banner states) + desktop 1280; zero horizontal scroll throughout. Eyeballed headless 360 + 375 screenshots: one-row header no clip, visible gradient with legible subline, brand bigger/higher, reduced top gap.
+- Commit `2b3c96b` pushed to `redesign/homepage-v2` → PR #5 preview. Still NOT merged — gate on the preview.
