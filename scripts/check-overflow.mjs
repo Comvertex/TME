@@ -139,7 +139,7 @@ async function run() {
 
   try {
     // ---- Mobile widths ----
-    for (const width of [375, 390]) {
+    for (const width of [360, 375, 390]) {
       const page = await browser.newPage();
       await page.setViewport({ width, height: 800, deviceScaleFactor: 1, isMobile: true, hasTouch: true });
       await page.goto(url, { waitUntil: 'networkidle2' });

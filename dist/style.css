@@ -936,15 +936,23 @@ img { display: block; max-width: 100%; }
   .reviews .section-h2,
   .why .section-h2 { font-size: 28px; }
 
-  /* Stronger near-full banner mask on mobile so all hero text — especially the
-     lighter subline — stays legible over the image. */
+  /* Visible gradient (not a flat wash), but stronger than desktop: near-opaque
+     white across the left/centre where the text sits, fading to reveal the
+     image on the right. Keeps the lighter subline legible. */
   .hero__scrim {
-    background: linear-gradient(180deg,
-      rgba(255,255,255,.96) 0%,
-      rgba(255,255,255,.92) 50%,
-      rgba(255,255,255,.84) 100%);
+    background: linear-gradient(105deg,
+      rgba(255,255,255,.99) 0%,
+      rgba(255,255,255,.97) 50%,
+      rgba(255,255,255,.85) 74%,
+      rgba(255,255,255,.45) 90%,
+      rgba(255,255,255,.20) 100%);
   }
-  .hero__brand { font-size: 16px; margin-bottom: 12px; }
+
+  /* Tighter top gap: content starts higher (top-aligned, smaller top padding),
+     and a larger/bolder brand wordmark lifted toward the top. */
+  .hero { min-height: 70vh; align-items: flex-start; }
+  .hero__inner { padding-top: 30px; padding-bottom: 40px; }
+  .hero__brand { font-size: 23px; margin-bottom: 10px; }
 
   /* Taller blue bar with larger, prominent contact info stacked:
      phone on top, "Disponibili 24/7/365" below. */
@@ -962,20 +970,12 @@ img { display: block; max-width: 100%; }
   .topbar__phone { font-size: 20px; }
   .topbar__status { font-size: 14px; opacity: .92; }   /* "Disponibili 24/7/365" shown, stacked */
 
-  /* Header stacks: logo + hamburger on the top row, full-width
-     "Richiedi Preventivo" beneath — fits the full label at 375px, no overflow. */
-  .navbar { max-height: 170px; }
-  .navbar__inner {
-    flex-wrap: wrap;
-    gap: 10px;
-    row-gap: 12px;
-    min-height: 0;
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
-  .navbar__logo { order: 1; }
-  .navbar__toggle { order: 2; }
-  .navbar__inner > .tme-btn--nav { order: 3; flex-basis: 100%; width: 100%; padding: 12px 18px; font-size: 15px; }
+  /* One row: logo + compact full-label "Richiedi Preventivo" + hamburger.
+     Tight at 375/360 — the CTA is shrunk (font + padding) so nothing overflows
+     or clips; the label text is NOT shortened. */
+  .navbar__inner { gap: 8px; padding-left: 14px; padding-right: 14px; }
+  .navbar__toggle { width: 38px; padding: 8px; flex-shrink: 0; }
+  .navbar__inner > .tme-btn--nav { padding: 9px 12px; font-size: 12.5px; white-space: nowrap; }
 
   /* Trust: shrink-safe 2-col so the unbreakable "24/7/365" can't widen the
      page; numbers scaled down to fit the narrower cells. */
