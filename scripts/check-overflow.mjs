@@ -93,6 +93,11 @@ function pageProbe() {
   const logo = document.querySelector('.navbar__logo');
   const navCta = document.querySelector('.navbar__inner > .tme-btn--nav');
   const toggle = document.getElementById('navToggle');
+  const navbar = document.getElementById('navbar');
+  const nbr = navbar.getBoundingClientRect();
+  const ctaR = navCta.getBoundingClientRect();
+  const brand = document.querySelector('.hero__brand');
+  const phone = document.querySelector('.topbar__phone');
 
   return {
     cw, ch, sw: de.scrollWidth, noHScroll: de.scrollWidth === cw,
@@ -100,9 +105,15 @@ function pageProbe() {
     bannerVisible,
     floatInView: inView(fr), overlap, floatBottom: float.style.bottom,
     logoInView: inView(logo.getBoundingClientRect()),
-    navCtaShown: getComputedStyle(navCta).display !== 'none' && inView(navCta.getBoundingClientRect()),
+    navCtaShown: getComputedStyle(navCta).display !== 'none' && inView(ctaR),
     navCtaText: navCta.textContent.trim(),
+    // not clipped by the navbar's max-height/overflow:hidden
+    navCtaWithinNavbar: ctaR.top >= nbr.top - 1 && ctaR.bottom <= nbr.bottom + 1 &&
+                        ctaR.left >= nbr.left - 1 && ctaR.right <= nbr.right + 1,
     toggleShown: getComputedStyle(toggle).display !== 'none' && inView(toggle.getBoundingClientRect()),
+    brandText: brand ? brand.textContent.trim() : '',
+    brandShown: brand ? (getComputedStyle(brand).display !== 'none' && brand.getBoundingClientRect().width > 0) : false,
+    phoneFont: parseFloat(getComputedStyle(phone).fontSize),
   };
 }
 
@@ -148,9 +159,12 @@ async function run() {
         expect(m.offenders.length === 0, `${at}: offenders ${JSON.stringify(m.offenders)}`);
         expect(m.logoInView, `${at}: logo not in view`);
         expect(m.navCtaShown, `${at}: nav CTA not visible/in-view`);
-        expect(m.navCtaText.length > 0, `${at}: nav CTA empty`);
+        expect(m.navCtaText === 'Richiedi Preventivo', `${at}: nav CTA label not full ("${m.navCtaText}")`);
+        expect(m.navCtaWithinNavbar, `${at}: nav CTA clipped by navbar`);
         expect(m.toggleShown, `${at}: hamburger not visible/in-view`);
         expect(m.floatInView, `${at}: WhatsApp float not in viewport`);
+        expect(m.brandShown && /Taxi Merci Express/.test(m.brandText), `${at}: hero brand text missing/hidden`);
+        expect(m.phoneFont >= 18, `${at}: top-bar phone font too small (${m.phoneFont}px)`);
       }
       expect(shown.overlap === false, `@${width} banner-shown: float overlaps banner`);
       expect(dismissed.floatBottom === '22px', `@${width} dismissed: float not back at 22px (${dismissed.floatBottom})`);
