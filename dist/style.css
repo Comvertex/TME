@@ -942,4 +942,8 @@ img { display: block; max-width: 100%; }
   .cta-band__actions { flex-direction: column; align-items: stretch; }
   .hero__cta .tme-btn,
   .cta-band__actions .tme-btn { width: 100%; }
+
+  /* Consent banner spans the bottom cleanly (no 420px overflow); the
+     WhatsApp float is lifted clear above it by JS while it's visible. */
+  .consent-banner { left: 12px; right: 12px; bottom: 12px; max-width: none; padding: 16px 18px; }
 }

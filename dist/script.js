@@ -160,10 +160,12 @@
     function adjustWhatsApp() {
       if (!whatsapp) return;
       var visible = banner && banner.style.display === 'block';
-      // Banner is bottom-left, float is bottom-right — only collide on
-      // narrow screens where the card spans most of the width.
-      if (visible && window.innerWidth <= 700) {
-        whatsapp.style.bottom = (banner.offsetHeight + 40) + 'px';
+      // Desktop: banner is a bottom-left card, float is bottom-right — no
+      // collision. Mobile (<=620px, where the banner spans the bottom): lift
+      // the float clear above the banner so it stays visible and tappable.
+      // Recompute from the live banner height so a font-reflow can't bury it.
+      if (visible && window.innerWidth <= 620) {
+        whatsapp.style.bottom = (banner.offsetHeight + 26) + 'px';
       } else {
         whatsapp.style.bottom = '22px';
       }
@@ -186,6 +188,12 @@
 
     adjustWhatsApp();
     window.addEventListener('resize', adjustWhatsApp);
+    // Re-run after full load and after fonts settle — banner height can grow
+    // when Montserrat swaps in, which would otherwise leave the float covered.
+    window.addEventListener('load', adjustWhatsApp);
+    if (document.fonts && document.fonts.ready && document.fonts.ready.then) {
+      document.fonts.ready.then(adjustWhatsApp).catch(function () {});
+    }
   }
 
   if (document.readyState === 'loading') {
