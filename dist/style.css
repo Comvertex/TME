@@ -101,7 +101,10 @@ img { display: block; max-width: 100%; }
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 32px;
+  /* horizontal only — longhand so it never clobbers a child's vertical
+     padding (e.g. .hero__inner / .cta-band__inner) at the mobile breakpoint */
+  padding-left: 32px;
+  padding-right: 32px;
 }
 
 .section { padding: 104px 0; }
@@ -382,15 +385,15 @@ img { display: block; max-width: 100%; }
   padding: 8px 0;
 }
 .mobile-menu.is-open { display: flex; }
-.mobile-menu a {
+.mobile-menu a:not(.mobile-menu__cta) {
   padding: 14px 32px;
   font-weight: 600;
   font-size: 16px;
   color: var(--text);
   border-bottom: 1px solid #f0f4f8;
 }
-.mobile-menu a:last-child { border-bottom: none; }
-.mobile-menu a:hover { color: var(--primary); background: var(--surface-alt); }
+.mobile-menu a:not(.mobile-menu__cta):hover { color: var(--primary); background: var(--surface-alt); }
+.mobile-menu__cta { margin: 12px 20px 6px; }
 
 /* ============================================================
    Hero
@@ -918,7 +921,7 @@ img { display: block; max-width: 100%; }
    Responsive — ≤620px
    ============================================================ */
 @media (max-width: 620px) {
-  .container { padding: 0 20px; }
+  .container { padding-left: 20px; padding-right: 20px; }
   .section { padding: 64px 0; }
 
   .hero__title { font-size: 33px; }
@@ -930,14 +933,30 @@ img { display: block; max-width: 100%; }
   .topbar__reviews,
   .topbar__status { display: none; }
 
-  .trust__stats { grid-template-columns: 1fr 1fr; }
+  /* Inline nav CTA would crowd logo + hamburger below ~410px and get clipped;
+     it moves into the hamburger menu instead (see .mobile-menu__cta). */
+  .navbar__inner > .tme-btn--nav { display: none; }
+
+  /* Trust: shrink-safe 2-col so the unbreakable "24/7/365" can't widen the
+     page; numbers scaled down to fit the narrower cells. */
+  .trust__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat { min-width: 0; padding: 26px 8px; }
   .stat:nth-child(2) { border-right: none; }
+  .stat__num { font-size: 30px; }
+  .stat__num .star { font-size: 20px; }
+
+  /* Register dividers: the long nowrap note is decorative — drop it on mobile
+     so it can't push the row wider than the viewport. */
+  .register-note { display: none; }
+
+  .rating-badge { max-width: none; }
 
   .card-grid { grid-template-columns: 1fr; }
   .coverage__grid { grid-template-columns: 1fr; }
   .footer__grid { grid-template-columns: 1fr; }
+  .footer__contacts a { overflow-wrap: anywhere; }
 
-  .cta-band__inner { flex-direction: column; align-items: stretch; }
+  .cta-band__inner { flex-direction: column; align-items: stretch; padding: 48px 20px; gap: 22px; }
   .hero__cta,
   .cta-band__actions { flex-direction: column; align-items: stretch; }
   .hero__cta .tme-btn,
