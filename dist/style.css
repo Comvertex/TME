@@ -411,7 +411,7 @@ img { display: block; max-width: 100%; }
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url('/assets/herobanner.jpg') center/cover no-repeat;
+  background: url('/assets/taxi_merci_express_corriere_dedicato.webp') center/cover no-repeat;
 }
 .hero__video {
   position: absolute;
