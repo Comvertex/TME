@@ -105,3 +105,11 @@
 - Added `scripts/check-overflow.mjs`: reusable headless guard (system Chrome via puppeteer-core) asserting zero horizontal overflow + header/float invariants at true 375/390/1280. puppeteer-core intentionally NOT a repo dep (keeps node_modules out of Netlify's publish='.' root; run via global install or NODE_PATH). Guard run: PASS.
 - Matteo compressed the 3 brand logos out-of-band (tme-logo-blue 472KB→16KB, white 222KB→21KB, plane 192KB→18KB; filenames unchanged, verified valid WebP) → committed. Added `taxi_merci_express_corriere_dedicato.webp` (same hero photo as herobanner.jpg, webp) and pointed the hero poster at it (verified references new file, decodes 6000×4000, served 200). `herobanner.jpg` kept in assets, unreferenced.
 - Commits `ed7e85b` (header) + `6f02c97` (assets) pushed to `redesign/homepage-v2` → PR #5 preview. Still NOT merged — gate on the preview.
+
+## 2026-06-27 — Hero scrim/brand + full mobile CTA + bigger top bar — Claude Code
+- Hero scrim strengthened on mobile to a near-full white banner mask (180deg .96→.92→.84) so eyebrow/H1/subline stay legible over the photo; desktop scrim unchanged.
+- Added visible brand wordmark "Taxi Merci Express" in the hero (separate <p class="hero__brand">, NOT a 2nd <h1>) — fixes that the name appeared nowhere as on-page text; helps brand SEO.
+- Reverted the mobile nav CTA to the full "Richiedi Preventivo": header now stacks on mobile (logo + hamburger top row, full-width CTA beneath) so the full label fits at 375px; navbar max-height raised to 170px for the second row. Dropped the "Preventivo" short-label approach.
+- Bigger mobile top bar: phone 20px, "Disponibili 24/7/365" 14px, min-height 80px.
+- Extended scripts/check-overflow.mjs (full CTA label assert + CTA-not-clipped-by-navbar + hero brand present + phone >=18px). Guard PASS at true 375/390 (both banner states) + desktop 1280; zero horizontal scroll throughout. Eyeballed a headless 375 screenshot: scrim legible, brand visible, full CTA on its own row, bigger top bar.
+- Commit `71c94b5` pushed to `redesign/homepage-v2` → PR #5 preview. Still NOT merged — gate on the preview.
