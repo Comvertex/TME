@@ -126,3 +126,10 @@
 - From Matteo's real mobile screenshot: hero content was top-aligned leaving a tall empty image band below the CTAs. Fixed: mobile hero align-items center + symmetric 28px padding in a 70vh hero → content vertically centred (verified gapAbove==gapBelow=28 at 412px).
 - Header CTA enlarged ~20% (font 12.5→15px). Tightened row (gap 6, navbar padding 8, toggle 36) so the full "Richiedi Preventivo" still fits one row at 360px with 24px free (12px slack after gaps) — not borderline. Guard PASS @360/375/390 (both banner states) + desktop 1280; zero horizontal scroll. Eyeballed 375 + 412 screenshots.
 - Commit `37e3921` pushed to `redesign/homepage-v2` → PR #5 preview. Still NOT merged — gate on the preview.
+
+## 2026-06-27 — SEO: JPG social share card (WhatsApp/iMessage link preview) — Claude Code
+- Problem: link previews on WhatsApp/iMessage were blank because og:image was a WebP, which those crawlers (and Meta's) don't render.
+- Fix (branch `seo/og-share-card` off main, separate from the homepage redesign): repointed og:image + twitter:image to a real JPEG `assets/og-image.jpg` (1200×630, ~51KB, verified valid JPEG + dimensions); added og:image:type/width/height/alt + twitter:image:alt; twitter:card → summary_large_image. Committed with real git (the GitHub connector corrupts binaries — same failure as the abandoned self-host-fonts attempt).
+- The og:image URL is the absolute production path, so the card only fully validates POST-MERGE. Deploy-preview checks: page intact, /assets/og-image.jpg returns 200, Lighthouse SEO still 100.
+- AFTER MERGE: run the Facebook Sharing Debugger on https://www.taximerciexpress.it/ → "Scrape Again" to refresh Meta's crawler cache (WhatsApp shares it), then re-share in WhatsApp to confirm the card.
+- Note: this is a small SEO fix that went straight off main (PR #5 redesign was already merged to main as commit 8477305, so main now carries the redesigned index.html; this branch edits that same head).
