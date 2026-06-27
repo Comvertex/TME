@@ -65,18 +65,10 @@
 
     <!-- Fonts: self-hosted Montserrat 400/600/700 via @font-face in /dist/style.css (no third-party request) -->
 
-    <!-- Inline SVG icon sizing (replaces Font Awesome CDN) -->
-    <style>
-      .icon{display:inline-block;vertical-align:middle;fill:currentColor}
-      .phone-number .number-container{display:flex;align-items:center;gap:.5rem}
-      .phone-number .icon{width:2rem;height:2rem;color:var(--accent)}
-      .contact-link .icon{width:1em;height:1em;margin-right:.25rem}
-      .whatsapp-float .icon{width:30px;height:30px;margin-top:16px}
-      @media(max-width:768px){.phone-number .icon{width:1.2rem;height:1.2rem}}
-    </style>
-
     <!-- Styles -->
     <link rel="stylesheet" href="/dist/style.css">
+    <!-- No-JS fallback: ensure scroll-reveal content is always visible -->
+    <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
 
     <!-- Favicon -->
     <link rel="icon" type="image/webp" href="assets/favicon.webp">
@@ -138,155 +130,416 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <header class="header">
-        <div class="top-header">
-            <a href="tel:+393513768842" class="phone-number">
-                <div class="number-container">
-                    <svg class="icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 146.81 230l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 137.7.97l-104 24A24 24 0 0 0 15 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23-18.3l24-104a24.29 24.29 0 0 0-13.61-28.2z"/></svg>
-                    <span class="number">+39 351 376 8842</span>
-                </div>
-                <span class="availability">Disponibili 24/7</span>
-            </a>
+    <!-- ===== HEADER ===== -->
+    <header class="site-header">
+        <div class="topbar">
+            <div class="container topbar__inner">
+                <a href="https://www.google.com/search?sxsrf=APpeQnuLsG4xK4baEpI2zAhblL_2E1PKNg:1782517140555&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_78Q9Q893fHNcM0EKjB7LnEOcdZ5TVuTwXRWoDcfy3kchIZBkvg3FdKPpvobLPFZn4kaQKLpJxsa-4I46006HVbEKgI8iMz2AsBek_vBkHFQ_qa0QQ%3D%3D&q=Taxi+Merci+Express+Reviews" target="_blank" rel="noopener" class="topbar__reviews">
+                    <span class="topbar__stars">★★★★★</span>
+                    <span>5,0 su Google</span>
+                    <span class="topbar__dot">·</span>
+                    <span class="topbar__count">63 recensioni</span>
+                </a>
+                <a href="tel:+393513768842" class="topbar__phone" onclick="return gtagSendEvent('tel:+393513768842');">
+                    <svg viewBox="0 0 512 512" width="16" height="16" fill="#f39c12" aria-hidden="true"><path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 146.81 230l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 137.7.97l-104 24A24 24 0 0 0 15 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23-18.3l24-104a24.29 24.29 0 0 0-13.61-28.2z"/></svg>
+                    +39 351 376 8842
+                </a>
+                <span class="topbar__status">
+                    <span class="pulse-dot"></span>
+                    Disponibili 24/7/365
+                </span>
+            </div>
         </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="#servizi">Servizi</a></li>
-                <li><a href="#copertura">Copertura</a></li>
-                <li><a href="#contatti">Contatti</a></li>
-            </ul>
+        <div class="navbar" id="navbar">
+            <div class="container navbar__inner">
+                <a href="#top" class="navbar__logo" aria-label="Taxi Merci Express — home">
+                    <span class="logo-crop">
+                        <img src="assets/tme-logo-white.webp" alt="Taxi Merci Express">
+                    </span>
+                </a>
+                <nav class="navbar__links" aria-label="Navigazione principale">
+                    <a href="#servizi" class="navlink">Servizi</a>
+                    <a href="#recensioni" class="navlink">Recensioni</a>
+                    <a href="#copertura" class="navlink">Copertura</a>
+                    <a href="#perche" class="navlink">Perché TME</a>
+                    <a href="#contatti" class="navlink">Contatti</a>
+                </nav>
+                <a href="mailto:preventivi@taximerciexpress.it" onclick="return gtagSendEvent('mailto:preventivi@taximerciexpress.it');" class="tme-btn tme-btn--primary tme-btn--nav">Richiedi Preventivo</a>
+                <button class="navbar__toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <nav class="mobile-menu" id="mobileMenu" aria-label="Navigazione mobile">
+            <a href="#servizi">Servizi</a>
+            <a href="#recensioni">Recensioni</a>
+            <a href="#copertura">Copertura</a>
+            <a href="#perche">Perché TME</a>
+            <a href="#contatti">Contatti</a>
         </nav>
     </header>
 
     <main>
-        <section class="hero-section">
-            <video
-                autoplay
-                muted
-                loop
-                playsinline
-            >
+        <!-- ===== HERO ===== -->
+        <section id="top" class="hero">
+            <div class="hero__poster"></div>
+            <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto">
                 <source src="assets/herovideo.mp4" type="video/mp4">
             </video>
-            <div class="hero-content">
-                <img src="assets/tme-logo-white.webp" alt="Taxi Merci Express Logo" class="hero-logo">
-                <h1>Taxi Merci Express</h1>
-                <div class="typewriter-container">
-                    <p class="typewriter-text line1">Affidabilità che conta,</p>
-                    <p class="typewriter-text line2">velocità che sorprende.</p>
-                </div>
-                <p class="delivery-time">Partenza entro 30 minuti dalla richiesta</p>
-                <div class="cta-buttons">
-                    <a href="mailto:preventivi@taximerciexpress.it" onclick="return gtagSendEvent('mailto:preventivi@taximerciexpress.it');" class="cta-button">Richiedi Preventivo</a>
-                    <a href="tel:+393513768842" onclick="return gtagSendEvent('tel:+393513768842');" class="cta-button">Chiama Ora</a>
+            <div class="hero__scrim"></div>
+            <div class="container hero__inner">
+                <div class="hero__content">
+                    <div class="eyebrow eyebrow--hero" data-reveal data-delay="0">
+                        <span class="eyebrow__rule"></span>
+                        Trasporto dedicato · 24/7/365
+                    </div>
+                    <h1 class="hero__title" data-reveal data-delay="120">
+                        Affidabilità che conta,<br><span>velocità che sorprende.</span>
+                    </h1>
+                    <p class="hero__lead" data-reveal data-delay="220">
+                        Trasporto dedicato e urgente, door-to-door senza passaggi di mano. <strong>Partenza entro 30 minuti dalla richiesta</strong> — da Firenze a tutta Italia ed Europa.
+                    </p>
+                    <p class="hero__subline" data-reveal data-delay="280">Dal singolo capo alla collezione intera: stessa cura, stessa prontezza.</p>
+                    <div class="hero__cta" data-reveal data-delay="360">
+                        <a href="mailto:preventivi@taximerciexpress.it" onclick="return gtagSendEvent('mailto:preventivi@taximerciexpress.it');" class="tme-btn tme-btn--primary">Richiedi Preventivo</a>
+                        <a href="tel:+393513768842" onclick="return gtagSendEvent('tel:+393513768842');" class="tme-btn tme-btn--secondary">
+                            <svg viewBox="0 0 512 512" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 146.81 230l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 137.7.97l-104 24A24 24 0 0 0 15 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23-18.3l24-104a24.29 24.29 0 0 0-13.61-28.2z"/></svg>
+                            Chiama Ora
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="servizi" class="services-section">
-            <h2>Il Nostro Servizio Specializzato</h2>
-            <div class="service-features">
-                <div class="feature primary-service">
-                    <h3>Taxi Merci Express</h3>
-                    <p>Servizio di furgoni dedicati per trasporti speciali in Italia ed Europa. Partenza entro 30 minuti dalla richiesta.</p>
-                    <ul>
-                        <li>Fiere e mostre</li>
-                        <li>Sfilate di moda</li>
-                        <li>Merce fragile</li>
-                        <li>Consegne urgenti</li>
-                        <li>Monitoraggio in tempo reale</li>
-                        <li>Notifiche via email/SMS</li>
-                    </ul>
-                    <a href="mailto:preventivi@taximerciexpress.it" onclick="return gtagSendEvent('mailto:preventivi@taximerciexpress.it');" class="cta-button">Richiedi Preventivo</a>
+        <!-- ===== TRUST STRIP ===== -->
+        <section class="trust">
+            <div class="container">
+                <div class="trust__stats">
+                    <div class="stat" data-reveal data-delay="0">
+                        <div class="stat__num"><span data-countup="30" data-dec="0">30</span><span class="accent-l">′</span></div>
+                        <div class="stat__label">minuti alla partenza</div>
+                    </div>
+                    <div class="stat" data-reveal data-delay="80">
+                        <div class="stat__num">24<span class="accent-l">/</span>7<span class="accent-l">/</span>365</div>
+                        <div class="stat__label">sempre operativi</div>
+                    </div>
+                    <div class="stat" data-reveal data-delay="160">
+                        <div class="stat__num"><span data-countup="5" data-dec="1">5,0</span> <span class="star">★</span></div>
+                        <div class="stat__label">valutazione Google</div>
+                    </div>
+                    <div class="stat" data-reveal data-delay="240">
+                        <div class="stat__num"><span data-countup="63" data-dec="0">63</span></div>
+                        <div class="stat__label">recensioni verificate</div>
+                    </div>
+                </div>
+                <div class="trust__chips">
+                    <span class="chip"><span>✓</span> Un solo referente</span>
+                    <span class="chip"><span>✓</span> Monitoraggio in tempo reale</span>
+                    <span class="chip"><span>✓</span> Notifiche email / SMS</span>
+                    <span class="chip"><span>✓</span> Prezzo tutto compreso</span>
+                    <span class="chip"><span>✓</span> Nessun passaggio di mano</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SERVICES (dual register) ===== -->
+        <section id="servizi" class="services section">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <div class="eyebrow eyebrow--accent">Cosa trasportiamo</div>
+                    <h2 class="section-h2">Dal singolo capo alla collezione intera.</h2>
+                    <p class="section-sub">Stessa cura, stessa partenza in 30 minuti — che sia un oggetto urgente da recuperare o una consegna per una sfilata. Nessun incarico troppo piccolo.</p>
                 </div>
 
-                <div class="feature">
-                    <h3>On Board Courier (OBC) - Hand Carry</h3>
-                    <p>Servizio di corriere personale via aerea per spedizioni critiche e di alto valore in Italia, Europa e USA.</p>
-                    <ul>
-                        <li>Accompagnamento personale del carico</li>
-                        <li>Gestione doganale dedicata</li>
-                        <li>Staff multilingue (Italiano, Inglese, Francese)</li>
-                        <li>Monitoraggio in tempo reale</li>
-                        <li>Servizio 24/7/365</li>
-                        <li>Ideale per il settore moda</li>
-                    </ul>
-                    <a href="mailto:preventivi@taximerciexpress.it" onclick="return gtagSendEvent('mailto:preventivi@taximerciexpress.it');" class="cta-button">Richiedi Preventivo</a>
+                <!-- Register: everyday -->
+                <div class="register-divider" data-reveal>
+                    <span class="register-pill register-pill--light">Quotidiano &amp; urgente</span>
+                    <span class="register-rule"></span>
+                    <span class="register-note">il pane quotidiano · la maggior parte dei lavori</span>
+                </div>
+                <div class="card-grid">
+                    <div class="service-card tme-card" data-reveal data-delay="0">
+                        <div class="service-card__icon">
+                            <svg viewBox="0 0 24 18" width="27" height="27" fill="none" stroke="#1a4b84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 14H3c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1h9c.6 0 1 .4 1 1v10"/><path d="M13 6h3.5l3.5 3.6V13c0 .6-.4 1-1 1h-1.6"/><circle cx="6.6" cy="14" r="1.7"/><path d="M13.4 14H8.6"/><circle cx="15.6" cy="14" r="1.7"/></svg>
+                        </div>
+                        <h3>Privati &amp; urgenze quotidiane</h3>
+                        <p>Oggetti dimenticati, documenti, un singolo capo, ricambi, consegne personali urgenti — in città, in Italia e all'estero.</p>
+                        <ul class="card-list">
+                            <li>Partenza entro 30 minuti</li>
+                            <li>Nessun incarico troppo piccolo</li>
+                            <li>Prenoti con una chiamata o WhatsApp</li>
+                        </ul>
+                    </div>
+                    <div class="service-card tme-card" data-reveal data-delay="90">
+                        <div class="service-card__icon">
+                            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#1a4b84" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><line x1="9" y1="9" x2="9" y2="9.01"/><line x1="9" y1="13" x2="9" y2="13.01"/><line x1="9" y1="17" x2="9" y2="17.01"/></svg>
+                        </div>
+                        <h3>Aziende &amp; negozi locali</h3>
+                        <p>Ritiri e consegne ricorrenti, campionari, materiali, allestimenti e navette inter-sede, su misura per la tua attività.</p>
+                        <ul class="card-list">
+                            <li>Corse ricorrenti programmate</li>
+                            <li>Flotta dedicata</li>
+                            <li>Un referente unico</li>
+                        </ul>
+                    </div>
+                    <div class="service-card tme-card" data-reveal data-delay="180">
+                        <div class="service-card__icon service-card__icon--warm">
+                            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#e67e22" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </div>
+                        <h3>Urgenze &amp; spedizioni critiche</h3>
+                        <p>Partenza entro 30 minuti, corse nazionali e internazionali quotidiane, con monitoraggio in tempo reale dall'inizio alla consegna.</p>
+                        <ul class="card-list">
+                            <li>Door-to-door senza handoff</li>
+                            <li>Tracciamento in tempo reale</li>
+                            <li>Conferma di consegna email/SMS</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="feature">
-                    <h3>Servizi Trasferimento Bagagli</h3>
-                    <p>Servizio di trasferimento bagagli da e per la stazione e l'aeroporto di Firenze, garantendo sicurezza e puntualità.</p>
-                    <ul>
-                        <li>Ritiro e consegna puntuale</li>
-                        <li>Gestione bagagli di tutte le dimensioni</li>
-                        <li>Servizio disponibile 24/7</li>
-                        <li>Monitoraggio in tempo reale</li>
-                        <li>Prezzi trasparenti e competitivi</li>
-                    </ul>
-                    <a href="mailto:info@taximerciexpress.it" onclick="return gtagSendEvent('mailto:info@taximerciexpress.it');" class="cta-button">
-                        Richiedi Info
+                <!-- Register: premium -->
+                <div class="register-divider" data-reveal>
+                    <span class="register-pill register-pill--solid">Premium &amp; alto valore</span>
+                    <span class="register-rule"></span>
+                    <span class="register-note">la prova di quanto siamo bravi</span>
+                </div>
+                <div class="card-grid">
+                    <div class="service-card service-card--dark tme-card" data-reveal data-delay="0">
+                        <img src="assets/plane-logo.webp" alt="" class="service-card__plane">
+                        <div class="service-card__icon service-card__icon--ghost">
+                            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#f7b955" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+                        </div>
+                        <h3>Moda &amp; lusso · OBC</h3>
+                        <p>Trasporti dedicati per sfilate e campionari, capi e accessori di alto valore. <strong>Hand-carry in volo (OBC)</strong> per gli show internazionali.</p>
+                        <ul class="card-list">
+                            <li>Accompagnamento personale del carico</li>
+                            <li>Gestione doganale dedicata</li>
+                            <li>Staff multilingue (IT/EN/FR)</li>
+                        </ul>
+                    </div>
+                    <div class="service-card tme-card" data-reveal data-delay="90">
+                        <div class="service-card__icon service-card__icon--warm">
+                            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#e67e22" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                        </div>
+                        <h3>Arte &amp; allestimenti</h3>
+                        <p>Movimentazione di opere, cornici e materiali d'allestimento per musei e fiere, con la massima delicatezza.</p>
+                        <ul class="card-list">
+                            <li>Alta delicatezza e imballaggio</li>
+                            <li>Mezzi dedicati e sicuri</li>
+                            <li>Coordinamento con musei e fiere</li>
+                        </ul>
+                    </div>
+                    <div class="service-card tme-card" data-reveal data-delay="180">
+                        <div class="service-card__icon service-card__icon--warm">
+                            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#e67e22" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        </div>
+                        <h3>Eventi &amp; hospitality</h3>
+                        <p>Logistica per hotel di lusso ed eventi, gestione bagagli da e per la stazione e l'aeroporto di Firenze.</p>
+                        <ul class="card-list">
+                            <li>Trasferimento bagagli puntuale</li>
+                            <li>Disponibile 24/7</li>
+                            <li>Bagagli di ogni dimensione</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== REVIEWS ===== -->
+        <section id="recensioni" class="reviews section">
+            <div class="container">
+                <div class="reviews__split">
+                    <div class="reviews__intro" data-reveal>
+                        <div class="eyebrow eyebrow--accent">Dicono di noi</div>
+                        <h2 class="section-h2">La fiducia, verificata.</h2>
+                        <div class="rating-badge">
+                            <div class="rating-badge__score">
+                                <div class="big">5,0</div>
+                                <div class="stars">★★★★★</div>
+                            </div>
+                            <div class="rating-badge__divider"></div>
+                            <div>
+                                <div class="rating-badge__count">63 recensioni</div>
+                                <div class="rating-badge__where">su Google</div>
+                                <a href="https://www.google.com/search?sxsrf=APpeQnuLsG4xK4baEpI2zAhblL_2E1PKNg:1782517140555&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_78Q9Q893fHNcM0EKjB7LnEOcdZ5TVuTwXRWoDcfy3kchIZBkvg3FdKPpvobLPFZn4kaQKLpJxsa-4I46006HVbEKgI8iMz2AsBek_vBkHFQ_qa0QQ%3D%3D&q=Taxi+Merci+Express+Reviews" target="_blank" rel="noopener" class="rating-badge__link">Vedi su Google
+                                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews__list">
+                        <div class="review-card" data-reveal data-delay="0">
+                            <div class="review-card__stars">★★★★★</div>
+                            <p class="review-card__quote">"Avevo dimenticato dei documenti importanti e in venti minuti erano già in viaggio. Puntualità e gentilezza assolute, mi hanno aggiornato a ogni passaggio."</p>
+                            <div class="review-card__author">
+                                <div class="review-card__avatar review-card__avatar--blue">M</div>
+                                <div class="review-card__name"><strong>Marco R.</strong><span> · Firenze</span></div>
+                            </div>
+                        </div>
+                        <div class="review-card" data-reveal data-delay="100">
+                            <div class="review-card__stars">★★★★★</div>
+                            <p class="review-card__quote">"Trasporto di capi delicati per un evento: cura maniacale e un unico referente sempre raggiungibile. Esattamente ciò che serve quando non puoi sbagliare."</p>
+                            <div class="review-card__author">
+                                <div class="review-card__avatar review-card__avatar--orange">G</div>
+                                <div class="review-card__name"><strong>Giulia B.</strong><span> · Prato</span></div>
+                            </div>
+                        </div>
+                        <div class="review-card" data-reveal data-delay="200">
+                            <div class="review-card__stars">★★★★★</div>
+                            <p class="review-card__quote">"Consegna urgente fuori regione nel weekend, risolta senza un intoppo. Prezzo chiaro concordato prima, nessuna sorpresa. Servizio di altissimo livello."</p>
+                            <div class="review-card__author">
+                                <div class="review-card__avatar review-card__avatar--blue">A</div>
+                                <div class="review-card__name"><strong>Alessandro F.</strong><span> · Bologna</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== COVERAGE ===== -->
+        <section id="copertura" class="coverage section">
+            <div class="coverage__van" aria-hidden="true">
+                <svg viewBox="0 0 26 16" width="250" fill="none" stroke="#1a4b84" stroke-width="0.55" stroke-linecap="round" stroke-linejoin="round" opacity="0.42"><path d="M5 13H3c-.6 0-1-.4-1-1V3c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v10"/><path d="M14 5h3.8l3.7 3.8V12c0 .6-.4 1-1 1h-1.6"/><circle cx="6.6" cy="13" r="1.7"/><path d="M14.4 13H8.6"/><circle cx="16.6" cy="13" r="1.7"/><path d="M23.5 6.5h2M23 9h2.5M23.5 11.5h2" stroke="#f39c12" stroke-width="0.5"/></svg>
+            </div>
+            <div class="container">
+                <div class="section-head section-head--left" data-reveal>
+                    <div class="eyebrow eyebrow--accent">Dove operiamo</div>
+                    <h2 class="section-h2">Da Firenze a tutta Europa.</h2>
+                    <p class="section-sub">Base operativa in Toscana, corse nazionali e internazionali ogni giorno. Door-to-door, ovunque serva, con la stessa prontezza.</p>
+                </div>
+                <div class="coverage__grid" data-reveal>
+                    <div class="coverage-card">
+                        <div class="coverage-card__label">Base operativa</div>
+                        <div class="coverage-card__title">Firenze</div>
+                        <div class="coverage-card__sub">Toscana, Italia</div>
+                    </div>
+                    <div class="coverage-card coverage-card--blue">
+                        <div class="coverage-card__label">Servizio attivo in</div>
+                        <div class="coverage-areas">
+                            <div><span>●</span> Toscana</div>
+                            <div><span>●</span> Tutta Italia</div>
+                            <div><span>●</span> Europa</div>
+                        </div>
+                    </div>
+                    <div class="coverage-card">
+                        <div class="coverage-card__label">Hand-carry in volo</div>
+                        <div class="coverage-card__title">OBC</div>
+                        <div class="coverage-card__sub">Italia, Europa &amp; USA per le spedizioni critiche</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== WHY TME (mission control) ===== -->
+        <section id="perche" class="why section">
+            <div class="container">
+                <div class="why__split">
+                    <div class="why__intro" data-reveal>
+                        <div class="eyebrow eyebrow--light">Perché TME</div>
+                        <h2 class="section-h2">Un solo referente, nessun passaggio di mano.</h2>
+                        <p class="why__lead">TME è mission control a conduzione diretta: un unico responsabile operativo che decide in fretta, senza handoff tra reparti. Dal ritiro alla consegna, una sola persona risponde di tutto.</p>
+                        <p class="why__note">Ferdinando Martire — Titolare e Responsabile Operativo. La stessa etica che muove ogni corsa: arrivare fin dove serve per fare la cosa giusta.</p>
+                        <a href="mailto:preventivi@taximerciexpress.it" onclick="return gtagSendEvent('mailto:preventivi@taximerciexpress.it');" class="tme-btn tme-btn--primary">Richiedi Preventivo</a>
+                    </div>
+                    <div class="panel" data-reveal data-delay="120">
+                        <div class="panel__head">
+                            <span class="panel__label">Mission control</span>
+                            <span class="panel__live"><span></span> Operativo ora</span>
+                        </div>
+                        <div class="panel__grid">
+                            <div class="panel__tile">
+                                <div class="panel__tile-label">Partenza</div>
+                                <div class="panel__tile-val">≤ 30 min</div>
+                            </div>
+                            <div class="panel__tile">
+                                <div class="panel__tile-label">Copertura</div>
+                                <div class="panel__tile-val">24/7/365</div>
+                            </div>
+                            <div class="panel__tile">
+                                <div class="panel__tile-label">Tracking</div>
+                                <div class="panel__tile-val panel__tile-val--accent">Tempo reale</div>
+                            </div>
+                            <div class="panel__tile">
+                                <div class="panel__tile-label">Conferma</div>
+                                <div class="panel__tile-val panel__tile-val--sm">Email / SMS</div>
+                            </div>
+                        </div>
+                        <div class="panel__rows">
+                            <div><span>✓</span> Prezzo tutto compreso e trasparente</div>
+                            <div><span>✓</span> Flotta dedicata, Toscana · Italia · Europa</div>
+                            <div><span>✓</span> Un unico referente accountable</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA BAND ===== -->
+        <section class="cta-band">
+            <div class="container cta-band__inner">
+                <div data-reveal>
+                    <h2>Pronti a partire?</h2>
+                    <p>Preventivo su richiesta, risposta rapida. Partenza entro 30 minuti.</p>
+                </div>
+                <div class="cta-band__actions" data-reveal data-delay="100">
+                    <a href="mailto:preventivi@taximerciexpress.it" onclick="return gtagSendEvent('mailto:preventivi@taximerciexpress.it');" class="tme-btn tme-btn--ghost-light">Richiedi Preventivo</a>
+                    <a href="tel:+393513768842" onclick="return gtagSendEvent('tel:+393513768842');" class="tme-btn tme-btn--outline-light">
+                        <svg viewBox="0 0 512 512" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 146.81 230l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 137.7.97l-104 24A24 24 0 0 0 15 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23-18.3l24-104a24.29 24.29 0 0 0-13.61-28.2z"/></svg>
+                        +39 351 376 8842
                     </a>
-                </div>
-
-                <div class="feature highlight">
-                    <h3>Vantaggi del Nostro Servizio</h3>
-                    <ul>
-                        <li>✓ Partenza entro 30 minuti</li>
-                        <li>✓ Monitoraggio in tempo reale</li>
-                        <li>✓ Notifiche di consegna via email/SMS</li>
-                        <li>✓ Prezzo chiaro e tutto compreso</li>
-                    </ul>
-                    <a href="mailto:info@taximerciexpress.it" onclick="return gtagSendEvent('mailto:info@taximerciexpress.it');" class="cta-button">Richiedi Info</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="copertura" class="coverage-section">
-            <h2>Area di Copertura</h2>
-            <div class="coverage-info">
-                <div class="base">
-                    <h3>Base Operativa</h3>
-                    <p>Firenze, Toscana</p>
-                </div>
-                <div class="areas">
-                    <h3>Servizio Attivo in:</h3>
-                    <p>Toscana</p>
-                    <p>Tutta Italia</p>
-                    <p>Europa</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer id="contatti">
-        <div class="contact-info">
-            <h3>Contattaci</h3>
-            <p>
-                <a href="tel:+393513768842" class="contact-link">
-                    <svg class="icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 146.81 230l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 137.7.97l-104 24A24 24 0 0 0 15 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23-18.3l24-104a24.29 24.29 0 0 0-13.61-28.2z"/></svg> +39 351 376 8842
-                </a>
-            </p>
-            <p>
-                <a href="mailto:info@taximerciexpress.it" class="contact-link">
-                    <svg class="icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg> info@taximerciexpress.it
-                </a>
-            </p>
-            <p>
-                <a href="mailto:preventivi@taximerciexpress.it" class="contact-link">
-                    <svg class="icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg> preventivi@taximerciexpress.it
-                </a>
-            </p>
-            <p><strong>Disponibili 24/7, 365 giorni l'anno</strong></p>
+    <!-- ===== FOOTER ===== -->
+    <footer id="contatti" class="site-footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__col">
+                    <img src="assets/tme-logo-blue.webp" alt="Taxi Merci Express" class="footer__logo">
+                    <p class="footer__tagline">Trasporto dedicato e urgente da Firenze. Affidabilità che conta, velocità che sorprende.</p>
+                </div>
+                <div class="footer__col">
+                    <h3>Contattaci</h3>
+                    <div class="footer__contacts">
+                        <a href="tel:+393513768842" onclick="return gtagSendEvent('tel:+393513768842');">
+                            <svg viewBox="0 0 512 512" width="16" height="16" fill="#f39c12" aria-hidden="true"><path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 146.81 230l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 137.7.97l-104 24A24 24 0 0 0 15 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23-18.3l24-104a24.29 24.29 0 0 0-13.61-28.2z"/></svg>
+                            +39 351 376 8842
+                        </a>
+                        <a href="mailto:info@taximerciexpress.it" onclick="return gtagSendEvent('mailto:info@taximerciexpress.it');">
+                            <svg viewBox="0 0 512 512" width="16" height="16" fill="#f39c12" aria-hidden="true"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7z"/></svg>
+                            info@taximerciexpress.it
+                        </a>
+                        <a href="mailto:preventivi@taximerciexpress.it" onclick="return gtagSendEvent('mailto:preventivi@taximerciexpress.it');">
+                            <svg viewBox="0 0 512 512" width="16" height="16" fill="#f39c12" aria-hidden="true"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7z"/></svg>
+                            preventivi@taximerciexpress.it
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__col">
+                    <h3>Operatività</h3>
+                    <p class="footer__hours-main">Disponibili 24/7, 365 giorni l'anno</p>
+                    <p class="footer__hours-sub">Base operativa: Firenze, Toscana<br>Servizio in Toscana, Italia ed Europa</p>
+                </div>
+            </div>
+            <div class="footer__legal">
+                <p>Taxi Merci Express Group S.R.L. — P.IVA 07484870485 · Firenze</p>
+                <p>© <span id="footerYear">2026</span> Taxi Merci Express. Tutti i diritti riservati.</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Cookie consent banner (existing consent/GTM plumbing — restyled only) -->
     <div id="consent-banner" class="consent-banner">
-        <p>Questo sito utilizza i cookie per migliorare l'esperienza utente. Continuando a navigare, accetti l'uso dei cookie.</p>
-        <button id="accept-btn" onclick="consentGranted()">Accetta</button>
-        <button id="refuse-btn" onclick="consentRefused()">Rifiuta</button>
+        <p>Questo sito utilizza i cookie per migliorare l'esperienza di navigazione. Continuando ad usare il sito, accetti l'uso dei cookie.</p>
+        <div class="consent-banner__actions">
+            <button id="accept-btn" class="tme-btn tme-btn--primary" onclick="consentGranted()">Accetta</button>
+            <button id="refuse-btn" onclick="consentRefused()">Rifiuta</button>
+        </div>
     </div>
 
-    <a href="https://wa.me/+393513768842" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/393513768842" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
         <svg class="icon" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 438.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.5-186.6 184.5zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
     </a>
 
