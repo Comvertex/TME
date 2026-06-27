@@ -2,3 +2,9 @@ node_modules/
 .DS_Store 
 .env
 *.log 
+
+# Design handoff bundle — reference only, keep out of deployed root
+Taxi Merci Express Homepage/
+
+# Local preview helper (Claude Preview launch config) — not site code
+.claude/launch.json

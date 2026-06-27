@@ -77,3 +77,52 @@
 - Branch / PR: `improvements/seo-deglobal` / merged via PR #2 (supersedes closed #1). Preview was green, Lighthouse: Performance 79, Accessibility 93, Best Practices 100, **SEO 100**.
 - Status: shipped to production.
 - Note: first build in ~19 months exposed that the Netlify Prerender extension needs Node 20 (hence the pin).
+
+## 2026-06-27 — Phase C: homepage redesign implemented in code — IN REVIEW — Claude Code
+- Did: reimplemented the new homepage design (from `Taxi Merci Express Homepage/design_handoff_homepage/`) as plain vanilla HTML/CSS/JS in the live codebase. Full new section flow: two-tier sticky header → hero (video + L→R scrim) → trust strip (count-up stats + promise chips) → dual-register services (everyday + premium, plane only on Moda/OBC card) → static Google reviews → coverage (driving van watermark) → "Perché TME" mission-control panel → orange CTA band → 3-col footer w/ legal line → WhatsApp float + restyled cookie banner.
+- Translated the prototype's inline-style spec into external CSS on a normalized token set (`dist/style.css` fully rewritten, `@font-face` kept); behaviors rewritten vanilla (`dist/script.js`): nav collapse w/ 470ms anti-stutter lock, scroll-reveal via IntersectionObserver + guaranteed timeout fallback + `prefers-reduced-motion`, count-up, hero video crossfade, mobile hamburger menu.
+- Preserved unchanged: `<head>` SEO/canonical/OG/Twitter/JSON-LD, single `<h1>`, theme-color/geo; the `gtag('consent','default',…denied)` block, GTM `GTM-KCVV7X9L` (head + noscript), `consentGranted()/consentRefused()`, `cookieConsent` key, `gtagSendEvent()` on every tel:/mailto: CTA. NAP exact. Footer legal entity line included (owner-confirmed).
+- Verified locally (browser, localhost:8731): consent stays denied by default + banner shows; Accetta → consent update granted + banner hides; `gtagSendEvent` fires & returns true; no console errors; only external request is googletagmanager.com (self-hosted fonts load, zero other third-party); single H1; desktop nav + mobile hamburger + responsive grids all correct.
+- Branch: `redesign/homepage-v2` (off synced `main` = ab680a2). 5 commits. **NOT pushed** — awaiting Matteo's local review before pushing for a Netlify deploy preview.
+- Gitignored the `Taxi Merci Express Homepage/` handoff bundle so Netlify (`publish = "."`) won't serve it.
+- Open items: (1) footer legal line confirmed but flag once more before merge; (2) review quotes are placeholders (await curated set + Place ID); (3) gate on the deploy preview (Node-20 build, document.fonts, SEO/JSON-LD, consent) before merge.
+
+## 2026-06-27 — Phase C cont.: curated reviews wired + branch pushed for preview — Claude Code
+- Did: replaced the 3 placeholder reviews with Matteo's curated real Google reviews (verbatim from `docs/reviews.md`): Fawne Thomas (8 mesi fa, EN), Martini Creative Team (3 mesi fa), Chiara Longo (5 mesi fa) — Title Case, ★★★★★. Verified the longer quotes fit the card cleanly (no overflow/clamp; cards grow 180–230px).
+- Swapped both Google links (top-bar rating + reviews badge) from the expiring `sxsrf` session URL to the stable Maps CID `https://www.google.com/maps?cid=5689742111578371114` (target=_blank rel=noopener).
+- Footer legal line approved by Matteo → shipping as-is.
+- Versioned the project-brief docs (`docs/content-brief.md`, `docs/design-direction.md`, `docs/reviews.md`); gitignored `.claude/launch.json` (local preview helper).
+- Pushed `redesign/homepage-v2` and opened **PR #5** (NOT merged) → triggers Netlify deploy preview. Gate before merge: Node-20 build, `document.fonts` Montserrat loaded, zero third-party beyond GTM, SEO/JSON-LD intact, consent gates GTM. Awaiting Matteo's preview review.
+
+## 2026-06-27 — Mobile horizontal-overflow fix (real root cause) — Claude Code
+- Matteo confirmed on a physical device that the mobile horizontal overflow was REAL (not a preview artifact). It pushed the fixed right-anchored WhatsApp float off-screen and broke the "Pronti a partire?" CTA-band spacing. (Claude Preview eval was unusable here — it reported 375 while laying out at ~609; that mismatch was the tell.)
+- Real offenders found & fixed: (1) trust strip "24/7/365" is an unbreakable token in a 2-col grid whose tracks default to min-width:auto → widened the page; fixed with `repeat(2,minmax(0,1fr))` + min-width:0 + reduced number font on mobile. (2) `.register-note` had `white-space:nowrap` with long text in a non-wrapping flex row → hidden on mobile. (3) `.container` used the `padding` shorthand, so the ≤620 `.container{padding:0 20px}` clobbered `.hero__inner` / `.cta-band__inner` vertical padding → switched container to `padding-left/right` longhand (this restored the CTA-band spacing). (4) Nav row (logo + full CTA + hamburger) didn't fit ≤~410px and the toggle got clipped → inline nav CTA now hidden ≤620 and surfaced inside the hamburger menu.
+- Verified with headless system Chrome (puppeteer-core) at TRUE 375 AND 390px, both banner states: `scrollWidth===clientWidth` (zero horizontal scroll), zero offenders, WhatsApp float in-viewport + tappable (lifted above banner when shown, back at corner when dismissed), CTA-band padding 48/20 + gap 22, no console errors (only GTM DNS in sandbox). Desktop 1280 regression-checked: no scroll, inline CTA/links shown, hamburger/menu hidden.
+- Commit `32a3c84` pushed to `redesign/homepage-v2` → updates PR #5 preview. Still NOT merged — gate on the preview.
+
+## 2026-06-27 — Mobile header polish + asset compression/poster swap — Claude Code
+- Mobile header (≤620px): (1) restored the nav CTA as a compact button with a short "Preventivo" label (full "Richiedi Preventivo" stays desktop) so logo+CTA+hamburger fit at 375px with zero horizontal scroll; in-menu CTA kept. (2) Taller blue top bar (column, min-height 66px) with "Disponibili 24/7/365" stacked below the phone (was hidden on mobile). Reused the existing status element → text reads "24/7/365" (matches desktop), not the "24/7 · 365" spelling — can switch separators if Matteo wants.
+- Added `scripts/check-overflow.mjs`: reusable headless guard (system Chrome via puppeteer-core) asserting zero horizontal overflow + header/float invariants at true 375/390/1280. puppeteer-core intentionally NOT a repo dep (keeps node_modules out of Netlify's publish='.' root; run via global install or NODE_PATH). Guard run: PASS.
+- Matteo compressed the 3 brand logos out-of-band (tme-logo-blue 472KB→16KB, white 222KB→21KB, plane 192KB→18KB; filenames unchanged, verified valid WebP) → committed. Added `taxi_merci_express_corriere_dedicato.webp` (same hero photo as herobanner.jpg, webp) and pointed the hero poster at it (verified references new file, decodes 6000×4000, served 200). `herobanner.jpg` kept in assets, unreferenced.
+- Commits `ed7e85b` (header) + `6f02c97` (assets) pushed to `redesign/homepage-v2` → PR #5 preview. Still NOT merged — gate on the preview.
+
+## 2026-06-27 — Hero scrim/brand + full mobile CTA + bigger top bar — Claude Code
+- Hero scrim strengthened on mobile to a near-full white banner mask (180deg .96→.92→.84) so eyebrow/H1/subline stay legible over the photo; desktop scrim unchanged.
+- Added visible brand wordmark "Taxi Merci Express" in the hero (separate <p class="hero__brand">, NOT a 2nd <h1>) — fixes that the name appeared nowhere as on-page text; helps brand SEO.
+- Reverted the mobile nav CTA to the full "Richiedi Preventivo": header now stacks on mobile (logo + hamburger top row, full-width CTA beneath) so the full label fits at 375px; navbar max-height raised to 170px for the second row. Dropped the "Preventivo" short-label approach.
+- Bigger mobile top bar: phone 20px, "Disponibili 24/7/365" 14px, min-height 80px.
+- Extended scripts/check-overflow.mjs (full CTA label assert + CTA-not-clipped-by-navbar + hero brand present + phone >=18px). Guard PASS at true 375/390 (both banner states) + desktop 1280; zero horizontal scroll throughout. Eyeballed a headless 375 screenshot: scrim legible, brand visible, full CTA on its own row, bigger top bar.
+- Commit `71c94b5` pushed to `redesign/homepage-v2` → PR #5 preview. Still NOT merged — gate on the preview.
+
+## 2026-06-27 — Header CTA inline+compact; stronger gradient scrim; tighter hero top — Claude Code
+- Top blue bar left as-is (Matteo: good). Three changes:
+  1. Reverted the two-row header → one row: logo + compact full-label "Richiedi Preventivo" (12.5px / 9×12 padding) + hamburger. Label NOT shortened. Measured 35px free space at 360px (logo 106 + CTA 153 + toggle 38 of 332 available) — comfortable, not borderline.
+  2. Hero scrim back to a VISIBLE gradient but stronger than the original: 105deg .99→.97 50%→.85 74%→.45 90%→.20 100% — near-opaque white over the text, image revealing on the right; lighter subline stays legible. Desktop scrim unchanged.
+  3. Tighter hero top gap on mobile (min-height 70vh, align flex-start, padding-top 30) + larger/bolder brand wordmark (23px) lifted toward the top.
+- Extended scripts/check-overflow.mjs to also test 360px. Guard PASS @360/375/390 (both banner states) + desktop 1280; zero horizontal scroll throughout. Eyeballed headless 360 + 375 screenshots: one-row header no clip, visible gradient with legible subline, brand bigger/higher, reduced top gap.
+- Commit `2b3c96b` pushed to `redesign/homepage-v2` → PR #5 preview. Still NOT merged — gate on the preview.
+
+## 2026-06-27 — Hero vertical-center + ~20% bigger header CTA — Claude Code
+- From Matteo's real mobile screenshot: hero content was top-aligned leaving a tall empty image band below the CTAs. Fixed: mobile hero align-items center + symmetric 28px padding in a 70vh hero → content vertically centred (verified gapAbove==gapBelow=28 at 412px).
+- Header CTA enlarged ~20% (font 12.5→15px). Tightened row (gap 6, navbar padding 8, toggle 36) so the full "Richiedi Preventivo" still fits one row at 360px with 24px free (12px slack after gaps) — not borderline. Guard PASS @360/375/390 (both banner states) + desktop 1280; zero horizontal scroll. Eyeballed 375 + 412 screenshots.
+- Commit `37e3921` pushed to `redesign/homepage-v2` → PR #5 preview. Still NOT merged — gate on the preview.
