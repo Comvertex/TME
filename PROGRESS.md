@@ -86,3 +86,10 @@
 - Branch: `redesign/homepage-v2` (off synced `main` = ab680a2). 5 commits. **NOT pushed** — awaiting Matteo's local review before pushing for a Netlify deploy preview.
 - Gitignored the `Taxi Merci Express Homepage/` handoff bundle so Netlify (`publish = "."`) won't serve it.
 - Open items: (1) footer legal line confirmed but flag once more before merge; (2) review quotes are placeholders (await curated set + Place ID); (3) gate on the deploy preview (Node-20 build, document.fonts, SEO/JSON-LD, consent) before merge.
+
+## 2026-06-27 — Phase C cont.: curated reviews wired + branch pushed for preview — Claude Code
+- Did: replaced the 3 placeholder reviews with Matteo's curated real Google reviews (verbatim from `docs/reviews.md`): Fawne Thomas (8 mesi fa, EN), Martini Creative Team (3 mesi fa), Chiara Longo (5 mesi fa) — Title Case, ★★★★★. Verified the longer quotes fit the card cleanly (no overflow/clamp; cards grow 180–230px).
+- Swapped both Google links (top-bar rating + reviews badge) from the expiring `sxsrf` session URL to the stable Maps CID `https://www.google.com/maps?cid=5689742111578371114` (target=_blank rel=noopener).
+- Footer legal line approved by Matteo → shipping as-is.
+- Versioned the project-brief docs (`docs/content-brief.md`, `docs/design-direction.md`, `docs/reviews.md`); gitignored `.claude/launch.json` (local preview helper).
+- Pushed `redesign/homepage-v2` and opened **PR #5** (NOT merged) → triggers Netlify deploy preview. Gate before merge: Node-20 build, `document.fonts` Montserrat loaded, zero third-party beyond GTM, SEO/JSON-LD intact, consent gates GTM. Awaiting Matteo's preview review.
