@@ -974,6 +974,7 @@ img { display: block; max-width: 100%; }
      ~20% larger (15px); gap/padding/toggle tightened so the full label still
      fits at 360px with zero overflow/clip. Label text is NOT shortened. */
   .navbar__inner { gap: 6px; padding-left: 8px; padding-right: 8px; }
+  .navbar__logo { margin-left: 10px; }  /* ~18px from the edge, matching top/bottom */
   .navbar__toggle { width: 36px; padding: 7px; flex-shrink: 0; }
   .navbar__inner > .tme-btn--nav { padding: 11px 12px; font-size: 15px; white-space: nowrap; }
 
