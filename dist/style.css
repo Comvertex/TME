@@ -948,10 +948,10 @@ img { display: block; max-width: 100%; }
       rgba(255,255,255,.20) 100%);
   }
 
-  /* Tighter top gap: content starts higher (top-aligned, smaller top padding),
-     and a larger/bolder brand wordmark lifted toward the top. */
-  .hero { min-height: 70vh; align-items: flex-start; }
-  .hero__inner { padding-top: 30px; padding-bottom: 40px; }
+  /* Content vertically centred within a trimmed hero (70vh) so it isn't a tall
+     band of empty image; larger/bolder brand wordmark. */
+  .hero { min-height: 70vh; align-items: center; }
+  .hero__inner { padding-top: 28px; padding-bottom: 28px; }
   .hero__brand { font-size: 23px; margin-bottom: 10px; }
 
   /* Taller blue bar with larger, prominent contact info stacked:
@@ -970,12 +970,12 @@ img { display: block; max-width: 100%; }
   .topbar__phone { font-size: 20px; }
   .topbar__status { font-size: 14px; opacity: .92; }   /* "Disponibili 24/7/365" shown, stacked */
 
-  /* One row: logo + compact full-label "Richiedi Preventivo" + hamburger.
-     Tight at 375/360 — the CTA is shrunk (font + padding) so nothing overflows
-     or clips; the label text is NOT shortened. */
-  .navbar__inner { gap: 8px; padding-left: 14px; padding-right: 14px; }
-  .navbar__toggle { width: 38px; padding: 8px; flex-shrink: 0; }
-  .navbar__inner > .tme-btn--nav { padding: 9px 12px; font-size: 12.5px; white-space: nowrap; }
+  /* One row: logo + full-label "Richiedi Preventivo" + hamburger. The CTA is
+     ~20% larger (15px); gap/padding/toggle tightened so the full label still
+     fits at 360px with zero overflow/clip. Label text is NOT shortened. */
+  .navbar__inner { gap: 6px; padding-left: 8px; padding-right: 8px; }
+  .navbar__toggle { width: 36px; padding: 7px; flex-shrink: 0; }
+  .navbar__inner > .tme-btn--nav { padding: 11px 12px; font-size: 15px; white-space: nowrap; }
 
   /* Trust: shrink-safe 2-col so the unbreakable "24/7/365" can't widen the
      page; numbers scaled down to fit the narrower cells. */
