@@ -126,3 +126,8 @@
 - From Matteo's real mobile screenshot: hero content was top-aligned leaving a tall empty image band below the CTAs. Fixed: mobile hero align-items center + symmetric 28px padding in a 70vh hero → content vertically centred (verified gapAbove==gapBelow=28 at 412px).
 - Header CTA enlarged ~20% (font 12.5→15px). Tightened row (gap 6, navbar padding 8, toggle 36) so the full "Richiedi Preventivo" still fits one row at 360px with 24px free (12px slack after gaps) — not borderline. Guard PASS @360/375/390 (both banner states) + desktop 1280; zero horizontal scroll. Eyeballed 375 + 412 screenshots.
 - Commit `37e3921` pushed to `redesign/homepage-v2` → PR #5 preview. Still NOT merged — gate on the preview.
+
+## 2026-06-27 — Update Google reviews links — Claude Code
+- Repointed both reviews links (top-bar rating + "Vedi su Google" badge) to the owner-provided `google.com/search?sxsrf=…&si=…&q=Taxi+Merci+Express+Reviews` URL. Branch `fix/reviews-google-link` off main → PR #7 (not merged). 2-line change.
+- ⚠️ While doing this I found an UNCOMMITTED, CORRUPTED `index.html` in the working tree (links rewritten to a `share.google/…` short link AND the file truncated mid-SVG — missing `</a>`, the `<script>`, `</body></html>`). Same text-decode/truncation failure mode as the GitHub connector on binaries/large edits. It was never committed or pushed — discarded via `git restore`; production/main is intact. Flag for the orchestrator: don't let the connector write index.html.
+- Note: sxsrf/si tokens in this URL can expire; a stable Maps/Place URL is more durable long-term, but the search URL is what was requested.
