@@ -1,31 +1,34 @@
 # Curated Google reviews (for the static reviews carousel)
 
-> Real, hand-picked 5★ Google reviews supplied by Matteo (2026-06-26) to replace the placeholder quotes. **Use verbatim** — do not edit the wording. Display names in Title Case. Each is a genuine public Google review. The block stays **static/curated** (no third-party widget).
+> Real, hand-picked 5★ Google reviews supplied by Matteo to replace the placeholder quotes. **Use verbatim** — do not edit the wording. Display names in Title Case. Each is a genuine public Google review. The block stays **static/curated** (no third-party widget). Order on the page: Guzzardi → Fawne → Martini.
 
-**"Vedi tutte le recensioni su Google" link — FINAL:** `https://www.google.com/maps?cid=5689742111578371114` (Matteo's Google business CID; stable, opens the TME listing + reviews in Maps). `target="_blank" rel="noopener"`. Do NOT use a `google.com/search?…sxsrf=…&si=…` session URL (those tokens expire). *(That numeric value is a CID, not an alphanumeric `ChIJ…` Place ID, so the `maps?cid=` form is the right one — not `search.google.com/local/reviews?placeid=`.)*
+**Rating / count:** ★ 5,0 · **65 recensioni** (top-bar `topbar__count`, reviews-badge `rating-badge__count`, and the trust-strip count-up all read 65).
+
+**"Vedi tutte le recensioni su Google" / top-bar rating link — CURRENT:** `https://share.google/TM6yVnWtl6CSpvnss` (Google "share" short link to the TME listing/reviews). `target="_blank" rel="noopener"`. *(Note: a stable Maps/Place URL is more durable long-term; this share link is the one Matteo provided.)*
 
 ## Review 1
+- **Author:** Michelangelo Guzzardi
+- **Rating:** ★★★★★
+- **When:** Giugno 2026
+- **Lang:** IT
+- **Quote:** "Eccellenti. Avevo urgenza di avere in Toscana un pacco che si trovava in Puglia. Chiamo alle 14:00 il nr che trovo on line, mi rispondono immediatamente e con cortesia. Alle 16:30 il corriere ritira il pacco e mi manda una foto whatsapp per conferma. La mattina alle 7:30 era già in Toscana con il pacco ed il sorriso. Consiglio vivamente"
+
+## Review 2
 - **Author:** Fawne Thomas — Local Guide, 19 reviews
 - **Rating:** ★★★★★
-- **When:** 8 mesi fa
+- **When:** Ottobre 2025
 - **Lang:** EN
 - **Quote:** "TME was fantastic! Next day turn around and consistent updates through the process. Highly recommend!"
 
-## Review 2
+## Review 3
 - **Author:** Martini Creative Team — Local Guide, 16 reviews
 - **Rating:** ★★★★★
-- **When:** 3 mesi fa
+- **When:** Marzo 2026
 - **Lang:** IT
 - **Quote:** "Bellissima esperienza, stamani alle 11 ho avuto un problema per un trasporto urgentissimo e sono stati grandiosi. Gentilezza e disponibilità due qualità rare ed il rapporto qualità prezzo eccezionale. Grazie"
 
-## Review 3
-- **Author:** Chiara Longo — 2 reviews
-- **Rating:** ★★★★★
-- **When:** 5 mesi fa
-- **Lang:** IT
-- **Quote:** "Avevo bisogno di fare un trasloco urgente e in poche ore sono stati disponibilissimi a mandarmi un furgone e un operatore per spostare tutto. Puntuali e attenti, sono stata pienamente soddisfatta. Grazie ancora!"
-
 ## Notes
-- These are longer than the placeholder quotes — the review card may need to accommodate more text (or a tidy max-height). Keep them readable; don't truncate the meaning.
-- Reviews #2/#3 are Italian, #1 is English. Kept as Matteo curated them (the EN one reads as an international/expat client — on-brand for Florence). Matteo can swap #1 for an Italian review later if he wants all-IT.
+- Chiara Longo's review (previously #3) was removed; Michelangelo Guzzardi added as the lead (most recent, Giugno 2026). Dates are shown as month/year on the cards.
+- Guzzardi's quote is noticeably longer — verified on the deploy preview that the review card grows to fit it without clipping.
+- Review #2 is English (international/expat client — on-brand for Florence); #1 and #3 are Italian.
 - Mentioning "rapporto qualità prezzo" inside a customer quote is fine — it's the reviewer's words, not TME publishing a price. No guardrail conflict.
