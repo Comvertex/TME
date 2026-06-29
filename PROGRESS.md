@@ -175,3 +175,10 @@
 - Cleanup: `git rm assets/og-image.jpg` (landscape card, no longer referenced — grep confirmed only PROGRESS history mentions it); deleted the untracked `assets/og-card.jpg` (not committed).
 - Verified locally: ends </html>, GTM ×2 intact, 0 og-image.jpg refs in index.html, twitter:card=summary, both descriptions carry the new text, logo asset present. Commit `3e39651`.
 - Preview: deploy-preview-8--taximerciexpress.netlify.app. NOT merged — Matteo verifies the preview then merges via git, then Facebook Sharing Debugger → "Scrape Again" + re-share.
+
+## 2026-06-29 — SHIPPED #8 (square-logo share card) + branch cleanup — Claude Code
+- Merged `seo/og-revert-logo` → main (`--no-ff`, merge `4e3d225`, pushed e0a2172..4e3d225). Only conflict was PROGRESS.md (both log appends) — resolved by keeping both; index.html auto-merged clean. PR #8 auto-closes.
+- Merged state verified: og:image + twitter:image = tme-logo-white.webp (square), og:image:type image/webp, twitter:card summary, both share descriptions = slogan + "★ 5,0 · 65 recensioni…", og-image.jpg deleted (0 refs); perf changes (#9) intact (hero-poster.webp + preload, video preload=none, 2 preconnects); GTM ×2, SEO meta description unchanged, ends </html>.
+- Deleted all merged branches (remote + local): redesign/homepage-v2 (#5), seo/og-share-card (#6), seo/og-revert-logo (#8), perf/hero-mobile (#9), and the closed fix/reviews-google-link (#7). origin now has only `main`.
+- Production now carries: redesign + reviews refresh (Guzzardi/65/share.google) + founder-name removal + square-logo social card + hero perf, with Prerender disabled (Matteo, via Netlify UI).
+- Post-deploy for Matteo: Facebook Sharing Debugger → "Scrape Again" on https://www.taximerciexpress.it/ then re-share in WhatsApp to confirm the square-logo card.
