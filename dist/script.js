@@ -132,19 +132,34 @@
       numEls.forEach(countOne);
     }, 1900);
 
-    /* ---------- Hero video crossfade ---------- */
+    /* ---------- Hero video: desktop only, on demand ----------
+       The poster (CSS background) is the LCP and shows on every viewport.
+       The ~2.3MB video is only fetched on wider screens — never on phones/
+       small tablets, with reduced-motion, or under Save-Data. preload="none"
+       + JS-added source keeps it off the initial critical path. */
     var video = document.getElementById('heroVideo');
     if (video) {
-      var showVideo = function () { video.classList.add('is-ready'); };
-      if (video.readyState >= 3) {
-        showVideo();
-      } else {
-        ['playing', 'canplay', 'loadeddata'].forEach(function (ev) {
-          video.addEventListener(ev, showVideo, { once: true });
-        });
+      var src = video.getAttribute('data-src');
+      var saveData = navigator.connection && navigator.connection.saveData;
+      var wantVideo = src && !reduce && !saveData &&
+        window.matchMedia('(min-width: 981px)').matches;
+      if (wantVideo) {
+        var showVideo = function () { video.classList.add('is-ready'); };
+        if (video.readyState >= 3) {
+          showVideo();
+        } else {
+          ['playing', 'canplay', 'loadeddata'].forEach(function (ev) {
+            video.addEventListener(ev, showVideo, { once: true });
+          });
+        }
+        var s = document.createElement('source');
+        s.src = src;
+        s.type = 'video/mp4';
+        video.appendChild(s);
+        video.load();
+        var pr = video.play && video.play();
+        if (pr && pr.catch) pr.catch(function () {});
       }
-      var pr = video.play && video.play();
-      if (pr && pr.catch) pr.catch(function () {});
     }
 
     /* ---------- Footer year ---------- */
