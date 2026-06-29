@@ -141,3 +141,8 @@
 - PR: `seo/og-share-card` → main is **PR #6** (updated to full scope). **NOT merged.** Cannot verify the Netlify deploy preview or Lighthouse from this environment (no outbound internet here), so the preview-gate can't be completed by me — left for Matteo.
 - ⚠️ PR #7 (`fix/reviews-google-link`, the earlier sxsrf reviews-link change) is SUPERSEDED by the share.google change here and should be CLOSED (its links would conflict with #6). Note: the PR-update connector mis-targeted #7 once (ignored pull_number) — its title/body were corrected and it should be closed.
 - TODO for Matteo (needs internet): verify deploy-preview-6 (page, /assets/og-image.jpg 200, Lighthouse SEO 100), merge PR #6, close PR #7, then Facebook Sharing Debugger → "Scrape Again" on prod + re-share in WhatsApp, click both review links live.
+
+## 2026-06-28 — Perché TME: remove founder name from the note — Claude Code
+- Per the founder's request, removed "Ferdinando Martire — Titolare e Responsabile Operativo" from the `why__note` line, keeping the concept (continuity + ethic) without restating the single-referente role (already stated 3× in the section: heading, lead twice). New note: "Dietro ogni corsa, sempre la stessa persona e la stessa etica: arrivare fin dove serve per fare la cosa giusta."
+- Confirmed the name appears nowhere else on the page (not in JSON-LD); only other repo hit is the internal `docs/content-brief.md` (not deployed) — left as-is, flagged for Matteo.
+- On `seo/og-share-card` (PR #6). Verified: page ends `</html>`, name gone, counts still 65 (top-bar + badge + trust-strip), links still share.google. NOT merged — Matteo verifies deploy-preview-6 and merges.
