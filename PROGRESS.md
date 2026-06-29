@@ -182,3 +182,9 @@
 - Deleted all merged branches (remote + local): redesign/homepage-v2 (#5), seo/og-share-card (#6), seo/og-revert-logo (#8), perf/hero-mobile (#9), and the closed fix/reviews-google-link (#7). origin now has only `main`.
 - Production now carries: redesign + reviews refresh (Guzzardi/65/share.google) + founder-name removal + square-logo social card + hero perf, with Prerender disabled (Matteo, via Netlify UI).
 - Post-deploy for Matteo: Facebook Sharing Debugger → "Scrape Again" on https://www.taximerciexpress.it/ then re-share in WhatsApp to confirm the square-logo card.
+
+## 2026-06-29 — Session wrap-up / handoff — Claude Code
+- Updated `CLAUDE.md` to current reality (was stale at 2026-06-25/PR#2): mission marked complete, fonts self-hosted, Prerender removed, redesign+reviews+share-card+perf all live, repo map + design-system + first-moves refreshed, added the binary-via-git-only + connector caveats.
+- Production `main` = redesign + self-hosted fonts + reviews (5,0/65/share.google, Guzzardi/Fawne/Martini) + founder-name removed + square-logo social card + hero perf (LCP 1.4s); Prerender disabled; origin has only `main`, no open PRs/branches.
+- Open follow-ups for a future session: (a) ⚠️ `docs/` + `PROGRESS.md` + `CLAUDE.md` are served publicly via `publish="."` — `docs/content-brief.md` mentions confidential client context; consider blocking `/docs/*`, `/PROGRESS.md`, `/CLAUDE.md` (e.g. `_redirects` 404) or moving internal notes out of the publish root. (b) CTA → Airtable intake form (TME OS Pilot 1). (c) Decide if Clarity should load pre-consent. (d) optional `.gitattributes` for CRLF.
+- Post-deploy reminder: Facebook Sharing Debugger → "Scrape Again" on the prod URL to refresh the WhatsApp/Meta card to the square logo.

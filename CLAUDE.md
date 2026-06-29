@@ -4,12 +4,7 @@
 
 ## Mission
 
-Build a proper **design system** from the current live site, **redesign the site in Figma** using TME's full brand range, then **implement and ship** it through the existing pipeline — **without losing the site's existing SEO or breaking its lead funnel**.
-
-Phases:
-1. **Inspect & extract** — derive a real design system (tokens + component inventory) from the current code.
-2. **Figma** — build the design system as a Figma library, then design the new site there. Use the Figma MCP / `figma-*` skills.
-3. **Implement & ship** — translate Figma → code, deploy via branch → preview → merge.
+Original mission (build a design system → redesign in Figma → implement & ship without losing SEO or the lead funnel) is **✅ COMPLETE and LIVE** (see Current state). The site is now in **maintenance / iteration**: content tweaks, perf, SEO/share polish — same pipeline, same guardrails.
 
 This site belongs to **Taxi Merci Express** (TME) — a Florence (Firenze) courier/freight SRL. It is the public face of a family business with real, hard-won search ranking. Treat it accordingly: **evolve, don't endanger.**
 
@@ -21,47 +16,44 @@ local repo (this folder)  →  git push  →  GitHub Comvertex/TME (branch: main
 
 - **Host:** Netlify, project `taximerciexpress` (site id `2cb9b992-2f49-4e4c-8752-170b1a501bf4`). Auto-publishes `main`.
 - **Workflow — ALWAYS:** new branch → open PR → Netlify builds a **deploy preview** (`deploy-preview-N--taximerciexpress.netlify.app`) → verify there → merge to `main` → production. **Never push experimental work straight to `main`.** Deploy previews are enabled for all PRs.
-- **`netlify.toml`:** `publish = "."` and **`NODE_VERSION = "20"`**. Do NOT remove the Node pin — the build runs the Netlify **Prerender extension**, which crashes on Node 18.
-- **Prerender extension** is installed but **redundant** for a static HTML site (bots already get full HTML). It adds build time + an edge function for no SEO gain. Leave it unless Matteo decides to remove it; just don't let it break builds.
-- **No build step today.** `dist/style.css` and `dist/script.js` are hand-edited plain CSS/JS. There is **no `src/` and no bundler.** If you introduce a build (e.g. SCSS, a framework), update `netlify.toml` accordingly and verify the preview.
+- **`netlify.toml`:** `publish = "."` and **`NODE_VERSION = "20"`**. Keep the Node pin (harmless; was originally required by the Prerender extension).
+- **Prerender extension: REMOVED** (Matteo disabled it in the Netlify dashboard, 2026-06-29 — it was redundant for static HTML and added ~600ms TTFB). It lived in the Netlify UI, not the repo. Don't re-enable.
+- **No build step.** `dist/style.css` and `dist/script.js` are hand-edited plain CSS/JS. There is **no `src/` and no bundler.** If you introduce a build (e.g. SCSS, a framework), update `netlify.toml` accordingly and verify the preview.
+- **⚠️ Binaries via git ONLY.** The GitHub/Zapier connector **text-decodes binary files and corrupts them** (bit fonts and a JPG). Always commit images/fonts/video with native `git`. The connector also has **no merge endpoint** and **mis-targets PR updates by content** — use it only to *open* a PR (explicit head/base); do merges/closes/branch-deletes with native git.
 
-## Current state (2026-06-25)
+## Current state (2026-06-29) — redesign LIVE in production
 
-**Shipped to production (PR #2, merged):**
-- SEO: meta description, canonical, Open Graph, Twitter cards, `LocalBusiness` JSON-LD (was: none).
-- De-Google part 1: removed the Font Awesome CDN; the 3 icons (phone, envelope, WhatsApp) are now **inline SVG**.
-- Fixed a malformed phone-icon SVG; flex-centered it with the number.
-- `sitemap.xml` → single real URL (was: useless `#fragment` entries + stale 2023 dates).
-- New `_headers`: `X-Robots-Tag: noindex` on `/test.html` + baseline security headers.
-- GTM (`GTM-KCVV7X9L`) + Consent Mode (default denied) + `gtagSendEvent()` click-tracking on every mailto/tel CTA — **all preserved. Do not break these.**
+The homepage is the **new redesigned single page**, fully shipped. Full session history in `PROGRESS.md`. Net feature set now live on `main`:
 
-**Abandoned (PR #3, closed):** an attempt to self-host the Montserrat fonts failed because the tool used (a GitHub API connector) **corrupts binary files** — it text-decodes them, so the committed woff2 were invalid (33.7KB vs the real 18.8KB). The page currently still loads **Montserrat from Google Fonts**. **YOUR job to redo this correctly:** you have real git + filesystem, so you can commit valid binaries.
-- Download Montserrat 400/600/700 woff2 (e.g. Fontsource: `@fontsource/montserrat` files `montserrat-latin-{400,600,700}-normal.woff2`, MIT) into `assets/fonts/`, add `@font-face`, remove the Google Fonts `<link>`. The `@font-face` block already exists from PR #3's attempt as a reference. Goal: **zero third-party requests** (only GTM remains, by design).
-- The abandoned branch `improvements/self-host-fonts` has corrupt fonts — ignore or delete it.
+- **Redesign (PR #5):** sticky two-tier header → hero (video + L→R scrim) → trust strip (count-up stats + promise chips) → dual-register services (everyday + premium; plane motif only on the Moda/OBC card) → static Google reviews → coverage (van watermark) → "Perché TME" mission-control panel → orange CTA band → 3-col footer (+ legal entity line `Taxi Merci Express Group S.R.L. — P.IVA 07484870485`) → WhatsApp float + restyled cookie banner. Built from the handoff in `Taxi Merci Express Homepage/` (gitignored) + `docs/design-system.md` / `design-direction.md` / `content-brief.md`.
+- **SEO/GTM preserved throughout:** `<title>`/description/canonical/theme-color/geo, OG/Twitter, `LocalBusiness` JSON-LD, single `<h1>` (the tagline "Affidabilità che conta, velocità che sorprende."). GTM `GTM-KCVV7X9L` + Consent Mode v2 (default-denied) + `consentGranted()/consentRefused()` + `cookieConsent` localStorage + `gtagSendEvent()` on every tel/mailto CTA — **all intact. Do not break these.** (GTM also loads GA4 + Google Ads + **Microsoft Clarity** — Matteo's heatmaps; leave them.)
+- **Self-hosted fonts: DONE.** Montserrat 400/600/700 woff2 in `assets/fonts/` via `@font-face` in `dist/style.css`. No Google Fonts link. **Zero third-party requests except `googletagmanager.com`** (by design).
+- **Reviews (PR #6/#8):** ★ 5,0 · **65 recensioni**, curated static quotes (Guzzardi → Fawne → Martini, month/year dates) from `docs/reviews.md`. Both review links → `https://share.google/TM6yVnWtl6CSpvnss`. No third-party review widget.
+- **Founder name removed** from "Perché TME" per request (concept kept).
+- **Social share card (PR #8):** `og:image`/`twitter:image` = `assets/tme-logo-white.webp` (square 1200×1200), `twitter:card=summary`, share descriptions carry the slogan + "★ 5,0 · 65 recensioni". (Earlier landscape `og-image.jpg` was removed.) WhatsApp/Meta need a Facebook Sharing Debugger "Scrape Again" to refresh after changes.
+- **Perf (PR #9):** hero video is **poster-only on mobile** (JS loads/plays it only ≥981px, never on reduced-motion/Save-Data; `preload="none"`); LCP poster is `assets/hero-poster.webp` (1600×1067, ~56KB, preloaded via `<link rel=preload as=image>`); preconnects to googletagmanager.com + scripts.clarity.ms. Mobile Lighthouse: **Perf 85, LCP 1.4s, CLS 0.027, SEO 100, Best Practices 100, A11y 98.**
+
+Earlier groundwork (PR #2): inline-SVG icons (no Font Awesome CDN), single-URL `sitemap.xml`, `_headers` (noindex `/test.html` + security headers).
+
+**Open PRs / branches:** none — `origin` has only `main`; all feature branches merged + deleted.
 
 ## Repo map
 
-- `index.html` — the live page. SEO + GTM + inline icons + self-hosted-font `@font-face` (fonts currently still Google-loaded; see above).
-- `dist/style.css` — hand-edited plain CSS (~900 lines). `dist/script.js` — vanilla JS (header scroll, cookie consent + GTM consent mode, WhatsApp float).
-- `assets/` — media. **Keep everything** (Matteo's instruction): only 3 are live (`favicon.webp`, `herovideo.mp4`, `tme-logo-white.webp`); the rest are **brand range for the redesign** — logo variants (`tme-logo-blue.webp`, `tme-logo-orange.webp`, `tme-logo-white.png`, `logo/logo2/logo3.webp`), `plane-logo.webp` (OBC / air-courier iconography), `herobanner.jpg` (8MB static hero alt), `logo-wa.jpg`. The design system should make use of this orange/blue identity and the plane motif.
-- `robots.txt`, `sitemap.xml`, `netlify.toml`, `_headers`.
-- **Leftover variants — keep, don't surface:** `index - nowhatsap.html` + `dist/{script,style} - nowhattsap.*` (no-WhatsApp variant); `test.html` + `dist/test.{css,js}` (a stale experiment, now noindexed — it carries a DIFFERENT phone `+39 351 604 7387` and its own GA4 `G-NQEND47CGQ` + Google Ads `AW-16765276917`; the live site uses only GTM).
+- `index.html` (~558 lines) — the live redesigned page: head shell (SEO/OG/Twitter/JSON-LD + GTM + consent + preconnect/preload) then the new section markup. Inline SVG icons.
+- `dist/style.css` (~1000 lines) — hand-edited plain CSS: self-hosted `@font-face`, normalized `:root` tokens, component classes, responsive `@media (≤980px)` + `(≤620px)` + `prefers-reduced-motion`. `dist/script.js` (~220 lines) — vanilla: nav collapse (470ms anti-stutter lock), scroll-reveal (IntersectionObserver + timeout fallback), count-up, hero video gating, mobile hamburger, consent wiring.
+- `assets/` — media. **Keep everything** (Matteo's instruction). Live: `favicon.webp`, `tme-logo-white.webp` (header logo, CSS-cropped; also the square social-card image), `tme-logo-blue.webp` (footer), `plane-logo.webp` (OBC card), `hero-poster.webp` (LCP poster, 1600px), `herovideo.mp4` (desktop hero only), Montserrat woff2 in `fonts/`. Unreferenced-but-kept: `herobanner.jpg`, `taxi_merci_express_corriere_dedicato.webp` (full-size hero source), `tme-logo-orange.webp`, `tme-logo-white.png`, `logo/logo2/logo3.webp`, `logo-wa.jpg`.
+- `docs/` — `design-system.md`, `design-direction.md`, `content-brief.md`, `reviews.md` (canonical copy/tokens/reviews — keep in sync with the page).
+- `scripts/check-overflow.mjs` — reusable headless guard (system Chrome via `puppeteer-core`) asserting zero mobile horizontal overflow + header/float invariants at 360/375/390 + desktop 1280. `puppeteer-core` is **not** a repo dep (keeps node_modules out of `publish="."`); run via a global install or `NODE_PATH`. Re-run after any header/hero/layout change.
+- `robots.txt`, `sitemap.xml`, `netlify.toml`, `_headers`, `.gitignore` (ignores `Taxi Merci Express Homepage/` + `.claude/launch.json`).
+- **Leftover variants — keep, don't surface:** `index - nowhatsap.html` + `dist/{script,style} - nowhattsap.*`; `test.html` + `dist/test.{css,js}` (stale, noindexed — carries a DIFFERENT phone `+39 351 604 7387` + its own GA4/Ads IDs; the live site uses only GTM).
 
-## Design tokens already present (your starting point)
+## Design system (as shipped)
 
-```css
---primary:  #1a4b84;  /* deep blue — trust */
---secondary:#e8f1f8;  /* light blue */
---accent:   #f39c12;  /* warm orange — CTAs */
---text:     #2c3e50;  /* dark slate */
---light:    #ffffff;
---gray:     #ecf0f1;
-```
-Type: **Montserrat** 400/600/700. Radii 4–8px. Shadow `0 2px 15px rgba(0,0,0,.1)`.
+Identity: deep blue `#1a4b84` (+ `#16365e`/`#14365f`/`#0e2a4a`), warm orange `#f39c12` (+ `#e67e22`/`#f7b955`), light-blue tint `#e8f1f8`, slate text `#2c3e50`/`#5b6b7a`. Full normalized token set is the `:root` block in `dist/style.css`; rationale in `docs/design-system.md` + `docs/design-direction.md`. Type **Montserrat** 400/600/700 (self-hosted). Buttons `.tme-btn--{primary,secondary,outline,ghost-light,outline-light}` (radius 8px), cards radius 14px, chips/pills fully rounded.
 
-Component inventory (current): two-tier fixed header (phone bar + nav), hero (video bg + typewriter + CTAs), service cards (`.feature`, `.primary-service` "Servizio Principale", `.feature.highlight`), coverage block, footer, cookie consent banner, WhatsApp float.
+Component inventory (live): two-tier header (`.topbar` + collapsible `.navbar` + `.mobile-menu` hamburger), hero (`.hero__poster`/`__video`/`__scrim` + brand wordmark + eyebrow + H1 + CTAs), `.trust` strip (`.stat` count-ups + `.chip`s), `.services` dual-register `.service-card`s (`.service-card--dark` = Moda/OBC w/ plane), `.reviews` (`.rating-badge` + `.review-card`s), `.coverage` (`.coverage-card`s + van watermark), `.why` mission-control `.panel`, `.cta-band`, `.site-footer`, `.whatsapp-float`, `#consent-banner`.
 
-Known CSS debt to clean up in the redesign: `darken()`/`lighten()` SASS functions used in plain CSS (broken consent-button hovers — invalid, silently ignored); duplicated/override blocks; inconsistent breakpoints (375/480/500/767/768/1024); hero video plays on mobile (data/battery cost — decide intentionally).
+The old CSS debt (SASS `darken()`/`lighten()` in plain CSS, duplicate blocks, 7 inconsistent breakpoints, video-on-mobile) was resolved in the redesign. Breakpoints are now just **≤980px** and **≤620px** (+ a 360px overflow check in the guard).
 
 ## Content & business facts (don't get these wrong)
 
@@ -85,7 +77,10 @@ Matteo relays prompts from a separate Claude session (the "TME OS" orchestrator)
 - Surface blockers and choices explicitly (don't silently pick on irreversible/branding calls).
 - When a phase completes, note it so the orchestrator can update the TME OS plan.
 
-## First moves (suggested)
-1. Read `PROGRESS.md`. Confirm local `main` is synced with origin; add a `.gitattributes` (`* text=auto eol=lf`) to stop CRLF churn.
-2. Do the **font self-hosting** fix (quick, unblocks "zero third-party calls") as your first real PR — it's a clean way to prove the pipeline end-to-end with binaries.
-3. Then start **Phase A**: extract the design system (tokens + components) and stand up the Figma library.
+## First moves (every session)
+1. Read the tail of `PROGRESS.md` for the latest state. `git fetch` and confirm local `main` == `origin/main` before branching (a past session found local main silently behind while git said "up to date").
+2. For any change: **new branch → push → open PR (connector OK for *open* only) → verify on the Netlify deploy preview → merge with native git → push `main`**. Production is a live family business; Matteo gates the merge. Re-run `scripts/check-overflow.mjs` after header/hero/layout edits.
+3. Commit binaries (images/fonts/video) with **native git only** — never the connector (it corrupts them).
+4. Append a session entry to `PROGRESS.md`.
+
+Possible next work (not started): CTA → Airtable intake form (TME OS Pilot 1); revisit whether Microsoft Clarity should load pre-consent; a `.gitattributes` (`* text=auto eol=lf`) to quiet CRLF churn.
