@@ -146,3 +146,9 @@
 - Per the founder's request, removed "Ferdinando Martire — Titolare e Responsabile Operativo" from the `why__note` line, keeping the concept (continuity + ethic) without restating the single-referente role (already stated 3× in the section: heading, lead twice). New note: "Dietro ogni corsa, sempre la stessa persona e la stessa etica: arrivare fin dove serve per fare la cosa giusta."
 - Confirmed the name appears nowhere else on the page (not in JSON-LD); only other repo hit is the internal `docs/content-brief.md` (not deployed) — left as-is, flagged for Matteo.
 - On `seo/og-share-card` (PR #6). Verified: page ends `</html>`, name gone, counts still 65 (top-bar + badge + trust-strip), links still share.google. NOT merged — Matteo verifies deploy-preview-6 and merges.
+
+## 2026-06-28 — SHIPPED: post-launch batch merged to main (production) — Claude Code
+- Matteo verified deploy-preview-6 (preview gate cleared). Merged `seo/og-share-card` → `main` with `--no-ff` (merge commit `fe975ea`) and pushed (`8477305..fe975ea`) → Netlify auto-deploys. PR #6 auto-closes as merged.
+- Pre-push sanity on merged index.html — all green: GTM-KCVV7X9L ×2 (head+noscript), gtagSendEvent present, consent default-denied present, og-image.jpg ×2 in OG meta (valid JPEG), twitter:card summary_large_image, both review links share.google (0 maps?cid), "65 recensioni" ×2 + trust-strip count-up 65, 0 "Ferdinando/Martire", ends </html>.
+- Closed PR #7 by deleting its superseded branch `fix/reviews-google-link` (sxsrf reviews link, obsolete) — `git push origin --delete`. GitHub auto-closes #7.
+- Native git only (connector has no merge endpoint + mis-targets PRs). Live-site verification (Facebook Sharing Debugger → Scrape Again, WhatsApp re-share, click both review links) is the orchestrator's post-deploy step — no internet from here.
