@@ -1,0 +1,7 @@
+# Keep internal docs out of the public site.
+# The repo is published at root (netlify.toml publish="."), so these would
+# otherwise be fetchable (e.g. /docs/content-brief.md). The trailing "!" forces
+# the redirect even though the static files exist, returning the 404 page.
+/docs/*        /404.html   404!
+/PROGRESS.md   /404.html   404!
+/CLAUDE.md     /404.html   404!
