@@ -152,3 +152,10 @@
 - Pre-push sanity on merged index.html — all green: GTM-KCVV7X9L ×2 (head+noscript), gtagSendEvent present, consent default-denied present, og-image.jpg ×2 in OG meta (valid JPEG), twitter:card summary_large_image, both review links share.google (0 maps?cid), "65 recensioni" ×2 + trust-strip count-up 65, 0 "Ferdinando/Martire", ends </html>.
 - Closed PR #7 by deleting its superseded branch `fix/reviews-google-link` (sxsrf reviews link, obsolete) — `git push origin --delete`. GitHub auto-closes #7.
 - Native git only (connector has no merge endpoint + mis-targets PRs). Live-site verification (Facebook Sharing Debugger → Scrape Again, WhatsApp re-share, click both review links) is the orchestrator's post-deploy step — no internet from here.
+
+## 2026-06-29 — Revert social image to logo + better share text — Claude Code
+- Branch `seo/og-revert-logo` off main → PR #8 (native git for the edits/cleanup; connector used only to OPEN the PR — it has no merge endpoint and mis-targets PR updates, so merge stays native git for Matteo).
+- index.html <head>: og:image + twitter:image → `assets/tme-logo-white.webp` (original square logo, verified 1200×1200); og:image:type → image/webp; width/height → 1200/1200; twitter:card → summary; og:description AND twitter:description → "Affidabilità che conta, velocità che sorprende. ★ 5,0 · 65 recensioni su Google. Partenza entro 30 minuti, 24/7." SEO <meta name=description> (services) left unchanged.
+- Cleanup: `git rm assets/og-image.jpg` (landscape card, no longer referenced — grep confirmed only PROGRESS history mentions it); deleted the untracked `assets/og-card.jpg` (not committed).
+- Verified locally: ends </html>, GTM ×2 intact, 0 og-image.jpg refs in index.html, twitter:card=summary, both descriptions carry the new text, logo asset present. Commit `3e39651`.
+- Preview: deploy-preview-8--taximerciexpress.netlify.app. NOT merged — Matteo verifies the preview then merges via git, then Facebook Sharing Debugger → "Scrape Again" + re-share.
