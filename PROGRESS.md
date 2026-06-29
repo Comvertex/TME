@@ -152,3 +152,13 @@
 - Pre-push sanity on merged index.html — all green: GTM-KCVV7X9L ×2 (head+noscript), gtagSendEvent present, consent default-denied present, og-image.jpg ×2 in OG meta (valid JPEG), twitter:card summary_large_image, both review links share.google (0 maps?cid), "65 recensioni" ×2 + trust-strip count-up 65, 0 "Ferdinando/Martire", ends </html>.
 - Closed PR #7 by deleting its superseded branch `fix/reviews-google-link` (sxsrf reviews link, obsolete) — `git push origin --delete`. GitHub auto-closes #7.
 - Native git only (connector has no merge endpoint + mis-targets PRs). Live-site verification (Facebook Sharing Debugger → Scrape Again, WhatsApp re-share, click both review links) is the orchestrator's post-deploy step — no internet from here.
+
+## 2026-06-29 — Perf: hero video/LCP + preconnects (Lighthouse follow-up) — Claude Code
+- Lighthouse (mobile, deploy preview) was: LCP 6.2s (score 11), TTFB 710ms (score 0), TBT 570ms, total weight 3,144 KiB — dominated by herovideo.mp4 (2.3MB). LCP element = the hero poster (CSS background), not the video.
+- Branch `perf/hero-mobile` off main → PR. Changes:
+  1. Video poster-only on mobile: removed inline <source>/autoplay, preload=none; JS attaches source + plays only at >=981px, never under prefers-reduced-motion or Save-Data. Saves ~2.3MB on phones; poster shows everywhere.
+  2. LCP poster resized: new `assets/hero-poster.webp` 1600x1067 / 56KB (downscaled via headless-Chrome canvas from the 6000x4000 / 181KB original — 24MP decode was the LCP bottleneck). CSS repointed + `<link rel=preload as=image fetchpriority=high>` in head. Original corriere webp kept (unreferenced).
+  3. preconnect → googletagmanager.com + scripts.clarity.ms (~260ms).
+- Verified headless: mobile fetches 0 video + the 56KB poster, desktop still plays video; preload+preconnects present; no console errors; overflow guard PASS @360/375/390+1280; page ends </html>, GTM ×2 intact.
+- NOT in code (owner actions): (3) **remove the Netlify Prerender extension** — it's enabled in the Netlify dashboard (not netlify.toml; no edge fn in repo), likely the cause of the 710ms TTFB; Matteo to disable it (Project → Extensions/Integrations). Node-20 pin left as-is (harmless once Prerender is gone). (5) Clarity/tag JS left as-is per Matteo (his heatmaps).
+- NOT merged — gate on deploy preview (re-run Lighthouse: expect big LCP/weight drop; TTFB drop comes after the Prerender removal).
