@@ -12,6 +12,11 @@
     <meta name="geo.region" content="IT-FI">
     <meta name="geo.placename" content="Firenze">
 
+    <!-- Performance: preconnect to tag origins + preload the LCP hero image -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://scripts.clarity.ms">
+    <link rel="preload" as="image" href="/assets/hero-poster.webp" fetchpriority="high">
+
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="it_IT">
@@ -189,9 +194,7 @@
         <!-- ===== HERO ===== -->
         <section id="top" class="hero">
             <div class="hero__poster"></div>
-            <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto">
-                <source src="assets/herovideo.mp4" type="video/mp4">
-            </video>
+            <video class="hero__video" id="heroVideo" muted loop playsinline preload="none" data-src="assets/herovideo.mp4"></video>
             <div class="hero__scrim"></div>
             <div class="container hero__inner">
                 <div class="hero__content">
