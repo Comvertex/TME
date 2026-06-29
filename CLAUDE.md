@@ -83,4 +83,6 @@ Matteo relays prompts from a separate Claude session (the "TME OS" orchestrator)
 3. Commit binaries (images/fonts/video) with **native git only** — never the connector (it corrupts them).
 4. Append a session entry to `PROGRESS.md`.
 
-Possible next work (not started): CTA → Airtable intake form (TME OS Pilot 1); revisit whether Microsoft Clarity should load pre-consent; a `.gitattributes` (`* text=auto eol=lf`) to quiet CRLF churn.
+**Next session (per Matteo): SEO + expanding the site** (more pages/content). A solid **tracking + consent structure is a prerequisite** — GTM/Consent Mode v2 + `gtagSendEvent` and the tag stack (GA4/Ads/Clarity) stay **as-is**; **do NOT defer/lazy-load or trim tags** (decided 2026-06-29 — lab TBT is noisy/third-party; field metrics are fine: TTFB 50ms, LCP 1.8s). When adding pages, replicate the head shell (SEO meta + canonical per-page + JSON-LD + GTM + consent + preconnect/preload) and keep one `<h1>` per page.
+
+Also parked: CTA → Airtable intake form (TME OS Pilot 1); optional `.gitattributes` (`* text=auto eol=lf`) for CRLF.

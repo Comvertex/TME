@@ -188,3 +188,9 @@
 - Production `main` = redesign + self-hosted fonts + reviews (5,0/65/share.google, Guzzardi/Fawne/Martini) + founder-name removed + square-logo social card + hero perf (LCP 1.4s); Prerender disabled; origin has only `main`, no open PRs/branches.
 - Open follow-ups for a future session: (a) ⚠️ `docs/` + `PROGRESS.md` + `CLAUDE.md` are served publicly via `publish="."` — `docs/content-brief.md` mentions confidential client context; consider blocking `/docs/*`, `/PROGRESS.md`, `/CLAUDE.md` (e.g. `_redirects` 404) or moving internal notes out of the publish root. (b) CTA → Airtable intake form (TME OS Pilot 1). (c) Decide if Clarity should load pre-consent. (d) optional `.gitattributes` for CRLF.
 - Post-deploy reminder: Facebook Sharing Debugger → "Scrape Again" on the prod URL to refresh the WhatsApp/Meta card to the square logo.
+
+## 2026-06-29 — SHIPPED #10 (internal docs blocked) + next-session focus — Claude Code
+- Merged `security/block-internal-docs` → main (`--no-ff`, `1040c3a`, pushed 88bc5e1..1040c3a); branch deleted (remote+local). origin = only `main`, no open PRs.
+- Live now: `_redirects` forces 404 on `/docs/*`, `/PROGRESS.md`, `/CLAUDE.md` (the `!` overrides the existing files); new `404.html` (noindex, on-brand) doubles as the site 404. Confidential `docs/content-brief.md` etc. no longer publicly served.
+- Latest mobile Lighthouse (Prerender fully off): Perf 80, FCP 1.0s, LCP 1.8s, CLS 0.036, SI 3.5s, **TTFB 50ms** (was 710ms), TBT 530ms. The 85→80 dip is entirely TBT = the kept third-party tag JS (GTM+GA4+Ads+Clarity ~490KB) + TBT lab noise; no JS changed. **Decision: do NOT defer/trim tags** — tracking/consent fidelity matters for the next phase.
+- NEXT SESSION (Matteo): **SEO + expanding the site** (more pages/content) on a solid tracking+consent base. Keep the GTM/Consent Mode structure intact; per new page, replicate the head shell + one <h1> + per-page canonical/JSON-LD.
