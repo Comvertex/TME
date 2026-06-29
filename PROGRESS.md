@@ -162,3 +162,10 @@
 - Verified headless: mobile fetches 0 video + the 56KB poster, desktop still plays video; preload+preconnects present; no console errors; overflow guard PASS @360/375/390+1280; page ends </html>, GTM ×2 intact.
 - NOT in code (owner actions): (3) **remove the Netlify Prerender extension** — it's enabled in the Netlify dashboard (not netlify.toml; no edge fn in repo), likely the cause of the 710ms TTFB; Matteo to disable it (Project → Extensions/Integrations). Node-20 pin left as-is (harmless once Prerender is gone). (5) Clarity/tag JS left as-is per Matteo (his heatmaps).
 - NOT merged — gate on deploy preview (re-run Lighthouse: expect big LCP/weight drop; TTFB drop comes after the Prerender removal).
+
+## 2026-06-29 — SHIPPED: hero perf to production (PR #9) — Claude Code
+- Matteo verified deploy-preview-9 (Performance 85, FCP 1.1s, LCP 1.4s [was 6.2s], CLS 0.027, TBT 310ms; SEO 100, Best Practices 100, A11y 98) and disabled the Netlify Prerender extension manually in the UI (TTFB fix).
+- Merged `perf/hero-mobile` → main (`--no-ff`, merge `099939f`) and pushed (`f5f8293..099939f`) → Netlify auto-deploys. PR #9 auto-closes; deleted the merged branch.
+- Sanity on merged main: GTM ×2, gtagSendEvent, consent default-denied, hero-poster.webp in CSS + preloaded, video preload=none, poster asset present, ends </html>.
+- Still OPEN: PR #8 `seo/og-revert-logo` (square-logo social card + slogan/reviews share text) — NOT in #9, not yet merged; production still serves the landscape og-image.jpg share card. Awaiting Matteo's decision to merge it (then Facebook Sharing Debugger → Scrape Again).
+- Stale merged branches still on origin (safe to delete): `redesign/homepage-v2` (PR #5), `seo/og-share-card` (PR #6).
