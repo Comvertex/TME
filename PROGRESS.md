@@ -169,3 +169,9 @@
 - Sanity on merged main: GTM ×2, gtagSendEvent, consent default-denied, hero-poster.webp in CSS + preloaded, video preload=none, poster asset present, ends </html>.
 - Still OPEN: PR #8 `seo/og-revert-logo` (square-logo social card + slogan/reviews share text) — NOT in #9, not yet merged; production still serves the landscape og-image.jpg share card. Awaiting Matteo's decision to merge it (then Facebook Sharing Debugger → Scrape Again).
 - Stale merged branches still on origin (safe to delete): `redesign/homepage-v2` (PR #5), `seo/og-share-card` (PR #6).
+## 2026-06-29 — Revert social image to logo + better share text — Claude Code
+- Branch `seo/og-revert-logo` off main → PR #8 (native git for the edits/cleanup; connector used only to OPEN the PR — it has no merge endpoint and mis-targets PR updates, so merge stays native git for Matteo).
+- index.html <head>: og:image + twitter:image → `assets/tme-logo-white.webp` (original square logo, verified 1200×1200); og:image:type → image/webp; width/height → 1200/1200; twitter:card → summary; og:description AND twitter:description → "Affidabilità che conta, velocità che sorprende. ★ 5,0 · 65 recensioni su Google. Partenza entro 30 minuti, 24/7." SEO <meta name=description> (services) left unchanged.
+- Cleanup: `git rm assets/og-image.jpg` (landscape card, no longer referenced — grep confirmed only PROGRESS history mentions it); deleted the untracked `assets/og-card.jpg` (not committed).
+- Verified locally: ends </html>, GTM ×2 intact, 0 og-image.jpg refs in index.html, twitter:card=summary, both descriptions carry the new text, logo asset present. Commit `3e39651`.
+- Preview: deploy-preview-8--taximerciexpress.netlify.app. NOT merged — Matteo verifies the preview then merges via git, then Facebook Sharing Debugger → "Scrape Again" + re-share.
